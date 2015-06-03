@@ -7,7 +7,7 @@
 </head>
 <body>
 <div id="global">
- 
+	
 </div>
 </body>
 </html>
