@@ -42,12 +42,17 @@
 		<servlet-name>default</servlet-name>
 		<url-pattern>*.png</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>default</servlet-name>
+		<url-pattern>*.PNG</url-pattern>
+	</servlet-mapping>
 
 	<!-- Spring context files to be loaded -->
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-            /WEB-INF/spring/dispatcher-servlet.xml
+            /WEB-INF/spring/applicationContext.xml,
+             /WEB-INF/spring/security-context.xml
         </param-value>
 	</context-param>
 

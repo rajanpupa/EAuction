@@ -1,0 +1,32 @@
+body{background-color: #ffffee;}
+
+.red{font-color:red;}
+.green{font-color:green;}
+.blue{font-color:blue;}
+
+#container{
+	width:70%; 
+	background-color:aqua; 
+	margin : 0 auto;
+	
+}
+
+.auction{
+	float:left;
+	border:1px solid black; 
+	margin: 1em;
+	padding 1em;
+}
+
+#AuctionDetail{
+	margin: 0 auto;
+	background-color: #efefef;
+	border: 2px solid red;
+}
+
+.detail-image{
+	margin: 0 auto;
+}
+
+
+

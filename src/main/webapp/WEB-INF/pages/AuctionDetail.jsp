@@ -13,29 +13,17 @@
 		<hr />
 
 		<div id="body">
-			<p>Welcome to Welcome page.</p>
+			<strong>Auction Detail Page</strong>
 
-			<p>This page is supposed to have all the auctions created. User
-				need not be logged in to view this page.</p>
+			<p>This page contains the details of only one auction.</p>
 
-			<div>
-				<div id="auctions" >
-					<c:forEach var="auction" items="${auctions }">
-						<spring:url value="auctionDetail/{auctionid}" var="detailUrl">
-							<spring:param name="auctionid" value="${auction.id }"/>
-						</spring:url>
-						<div class="auction" >
-							<a href="${detailUrl }"><p>${auction.title }</p></a>
-							<p>${auction.description }</p>
-						</div>
-					</c:forEach>
-					
+			<div id='AuctionDetail'>
+				<div class="detail-image">
+					<img alt="${auction.title }" src="/public/image/medium/${auction.id }.PNG">
 				</div>
-				
-				<br/>
+				<h3>${auction.title }</h3>
+				<p>${auction.description }</p>
 			</div>
-			<br/>
-			<hr/>
 
 		</div>
 
