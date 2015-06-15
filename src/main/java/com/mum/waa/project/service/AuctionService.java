@@ -15,4 +15,6 @@ public interface AuctionService {
 	public void deleteAuction(Auction auction);
 	
 	public void disableAuction(Auction auction);
+	
+	public Auction bid(String auctionId, Double bidAmount);
 }

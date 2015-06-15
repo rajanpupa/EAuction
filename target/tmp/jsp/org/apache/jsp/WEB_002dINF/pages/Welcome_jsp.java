@@ -63,9 +63,8 @@ public final class Welcome_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<!DOCTYPE HTML>\r\n");
       out.write("<html>\r\n");
       out.write("<head>\r\n");
-      out.write("<title>Add Product Form</title>\r\n");
-      out.write("<style type=\"text/css\" href=\"/public/style/main.css\">\r\n");
-      out.write("</style>\r\n");
+      out.write("\t<title>Add Product Form</title>\r\n");
+      out.write("\t<link rel=\"stylesheet\" type=\"text/css\" href=\"/public/style/main.css\" />\r\n");
       out.write("</head>\r\n");
       out.write("<body>\r\n");
       out.write("\t<div id=\"container\">\r\n");

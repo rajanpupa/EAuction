@@ -5,6 +5,8 @@
 <html>
 <head>
 	<title>Add Product Form</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script type="text/javascript" src="/public/script/auctiondetail.js" ></script>
 	<link rel="stylesheet" type="text/css" href="/public/style/main.css" />
 </head>
 <body>
@@ -23,6 +25,15 @@
 				</div>
 				<h3>${auction.title }</h3>
 				<p>${auction.description }</p>
+				
+				<form id="biddingform" method="post" action="/makebid"  >
+					<input type="hidden" name="auctionId" value="${auction.id }" />
+					<p>
+					Bid Amount: ${auction.maxBidAmount }
+					<input name="bidAmount" />
+					<input id="bidbutton" type="submit"  value="Make a Bid" />
+					</p>
+				</form>
 			</div>
 
 		</div>

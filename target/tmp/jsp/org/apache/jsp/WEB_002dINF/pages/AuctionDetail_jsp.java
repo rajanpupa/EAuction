@@ -48,6 +48,8 @@ public final class AuctionDetail_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("<html>\r\n");
       out.write("<head>\r\n");
       out.write("\t<title>Add Product Form</title>\r\n");
+      out.write("\t<script type=\"text/javascript\" src=\"http://code.jquery.com/jquery-1.10.1.min.js\"></script>\r\n");
+      out.write("\t<script type=\"text/javascript\" src=\"/public/script/auctiondetail.js\" ></script>\r\n");
       out.write("\t<link rel=\"stylesheet\" type=\"text/css\" href=\"/public/style/main.css\" />\r\n");
       out.write("</head>\r\n");
       out.write("<body>\r\n");
@@ -74,6 +76,19 @@ public final class AuctionDetail_jsp extends org.apache.jasper.runtime.HttpJspBa
       out.write("\t\t\t\t<p>");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${auction.description }", java.lang.String.class, (PageContext)_jspx_page_context, null));
       out.write("</p>\r\n");
+      out.write("\t\t\t\t\r\n");
+      out.write("\t\t\t\t<form id=\"biddingform\" method=\"post\" action=\"/makebid\"  >\r\n");
+      out.write("\t\t\t\t\t<input type=\"hidden\" name=\"auctionId\" value=\"");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${auction.id }", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\" />\r\n");
+      out.write("\t\t\t\t\t<p>\r\n");
+      out.write("\t\t\t\t\tBid Amount: ");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${auction.maxBidAmount }", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\r\n");
+      out.write("\t\t\t\t\t<input name=\"bidAmount\" />\r\n");
+      out.write("\t\t\t\t\t<input id=\"bidbutton\" type=\"submit\"  value=\"Make a Bid\" />\r\n");
+      out.write("\t\t\t\t\t</p>\r\n");
+      out.write("\t\t\t\t</form>\r\n");
       out.write("\t\t\t</div>\r\n");
       out.write("\r\n");
       out.write("\t\t</div>\r\n");

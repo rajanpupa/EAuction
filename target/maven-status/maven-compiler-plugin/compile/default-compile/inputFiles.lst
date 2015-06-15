@@ -1,6 +1,7 @@
 C:\Users\Admin\Documents\workspace-sts-3.6.4.RELEASE\EAuction\src\main\java\com\mum\waa\project\controller\SearchController.java
 C:\Users\Admin\Documents\workspace-sts-3.6.4.RELEASE\EAuction\src\main\java\com\mum\waa\project\domain\Auction.java
 C:\Users\Admin\Documents\workspace-sts-3.6.4.RELEASE\EAuction\src\main\java\com\mum\waa\project\controller\AuthenticationController.java
+C:\Users\Admin\Documents\workspace-sts-3.6.4.RELEASE\EAuction\src\main\java\com\mum\waa\project\domain\Bid.java
 C:\Users\Admin\Documents\workspace-sts-3.6.4.RELEASE\EAuction\src\main\java\com\mum\waa\project\repository\InMemoryAuctionRepositoryImpl.java
 C:\Users\Admin\Documents\workspace-sts-3.6.4.RELEASE\EAuction\src\main\java\com\mum\waa\project\controller\UserController.java
 C:\Users\Admin\Documents\workspace-sts-3.6.4.RELEASE\EAuction\src\main\java\com\mum\waa\project\service\AuctionService.java
