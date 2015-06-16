@@ -45,10 +45,16 @@ public class AuctionServiceImpl implements AuctionService{
 
 	@Override
 	public Auction bid(String auctionId, Double bidAmount) {
-		Auction auction = getAuctionById(auctionId);
-		if(bidAmount > auction.getMaxBidAmount()){
+		
+		Auction auction = auctionRepository.findAuctionById(auctionId);
+		if(auction == null){
+			System.out.println("the auction is not found.");
+			return null;
+		}else if(bidAmount > auction.getMaxBidAmount()){
 			auction.setMaxBidAmount(bidAmount);
-			auctionRepository.save(auction);
+			
+			System.out.println("bid amount set to " + auction.getMaxBidAmount());
+			auctionRepository.saveAuction(auction);
 			return auction;
 		}else{
 			return null;
