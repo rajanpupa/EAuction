@@ -21,6 +21,7 @@ public class WelcomeController {
 	@RequestMapping(value={"/","/welcome"}, method = RequestMethod.GET)
 	public String welcomePage(Model model){
 		
+		//model.addAttribute("categories", auctionService.ge);
 		model.addAttribute("auctions", auctionService.getAllAuctions());
 		return "Welcome";
 	}

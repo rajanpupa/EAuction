@@ -19,6 +19,27 @@
 			
 			<security:authorize access="isAuthenticated()">
 			<div id = "dropDowns">
+			
+		 <form name="searchform" id="searchform" method="get" action="/search"  >
+			 <select id = "category" name = "category">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+  				<option value="mercedes">Mercedes</option>
+ 			    <option value="audi">Audi</option>
+			</select>
+			  <input type = "text" placeholder = "Search Item"/>
+			   <input type="submit"  value="Search" />
+			   
+			    <select id = "category" name = "category">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+  				<option value="mercedes">Mercedes</option>
+ 			    <option value="audi">Audi</option>
+			</select>
+		  </form>
+			
+
+			
 			 <p>This is the dropdown. You should be authorized to see this.</p>
 			</div>
 			<p> <a href="<c:url value="j_spring_security_logout" />" > Logout</a> </p>

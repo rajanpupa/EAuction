@@ -146,6 +146,27 @@ public final class Welcome_jsp extends org.apache.jasper.runtime.HttpJspBase
     if (_jspx_eval_security_authorize_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       out.write("\r\n");
       out.write("\t\t\t<div id = \"dropDowns\">\r\n");
+      out.write("\t\t\t\r\n");
+      out.write("\t\t <form name=\"searchform\" id=\"searchform\" method=\"get\" action=\"/search\"  >\r\n");
+      out.write("\t\t\t <select id = \"category\" name = \"category\">\r\n");
+      out.write("                <option value=\"volvo\">Volvo</option>\r\n");
+      out.write("                <option value=\"saab\">Saab</option>\r\n");
+      out.write("  \t\t\t\t<option value=\"mercedes\">Mercedes</option>\r\n");
+      out.write(" \t\t\t    <option value=\"audi\">Audi</option>\r\n");
+      out.write("\t\t\t</select>\r\n");
+      out.write("\t\t\t  <input type = \"text\" placeholder = \"Search Item\"/>\r\n");
+      out.write("\t\t\t   <input type=\"submit\"  value=\"Search\" />\r\n");
+      out.write("\t\t\t   \r\n");
+      out.write("\t\t\t    <select id = \"category\" name = \"category\">\r\n");
+      out.write("                <option value=\"volvo\">Volvo</option>\r\n");
+      out.write("                <option value=\"saab\">Saab</option>\r\n");
+      out.write("  \t\t\t\t<option value=\"mercedes\">Mercedes</option>\r\n");
+      out.write(" \t\t\t    <option value=\"audi\">Audi</option>\r\n");
+      out.write("\t\t\t</select>\r\n");
+      out.write("\t\t  </form>\r\n");
+      out.write("\t\t\t\r\n");
+      out.write("\r\n");
+      out.write("\t\t\t\r\n");
       out.write("\t\t\t <p>This is the dropdown. You should be authorized to see this.</p>\r\n");
       out.write("\t\t\t</div>\r\n");
       out.write("\t\t\t<p> <a href=\"");
