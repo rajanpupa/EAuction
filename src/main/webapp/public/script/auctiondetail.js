@@ -11,10 +11,16 @@ $(document).ready( function(){
 			data: data,
 			dataType: "json",
 			contentType: 'application/json',
-			success: function(response){
-				console.log(response);
-				//$("#bidAmount").val();
- 		 		alert("Your Bidding was successful!!!" + response);
+			success: function(message){
+				console.log(message);
+				if(message.pass){
+					$("#maxBid").html(message.result);
+					$("#bidAmount").val(parseFloat(message.result) + 1.0);
+	 		 		//alert("Your Bidding was successful!!!" + message);
+				}else{
+					alert("You bid amount has to be more the max bid done.!!")
+				}
+				
 			},
 			error: function(err){			
 				console.log(err);
