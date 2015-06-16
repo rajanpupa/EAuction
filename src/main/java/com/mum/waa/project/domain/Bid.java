@@ -1,13 +1,24 @@
 package com.mum.waa.project.domain;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Bid {
-	String productId;
+	String auctionId;
 	Double bidAmount;
-	public String getProductId() {
-		return productId;
+	
+	public Bid(){}
+	
+	public Bid(String id, Double amount){
+		this.auctionId = id;
+		this.bidAmount = amount;
 	}
-	public void setProductId(String productId) {
-		this.productId = productId;
+	
+	public String getAuctionId() {
+		return auctionId;
+	}
+	public void setAuctionId(String auctionId) {
+		this.auctionId = auctionId;
 	}
 	public Double getBidAmount() {
 		return bidAmount;
@@ -15,6 +26,5 @@ public class Bid {
 	public void setBidAmount(Double bidAmount) {
 		this.bidAmount = bidAmount;
 	}
-
 	
 }

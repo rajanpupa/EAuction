@@ -26,14 +26,12 @@
 				<h3>${auction.title }</h3>
 				<p>${auction.description }</p>
 				
-				<form id="biddingform" method="post" action="/makebid"  >
-					<input type="hidden" name="auctionId" value="${auction.id }" />
-					<p>
-					Bid Amount: ${auction.maxBidAmount }
-					<input name="bidAmount" />
-					<input id="bidbutton" type="submit"  value="Make a Bid" />
-					</p>
-				</form>
+				<form:form modelAttribute="bid" id="biddingform" method="post" action="/makebid"  >
+					<form:input type="hidden" path="auctionId" ></form:input>
+					Bid Amount: <span id="maxBid">${auction.maxBidAmount }</span>
+					<form:input type="text" path="bidAmount" ></form:input>
+					<input type="submit"  value="Make a Bid" />
+				</form:form>
 			</div>
 
 		</div>

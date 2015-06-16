@@ -232,6 +232,9 @@ public final class Welcome_jsp extends org.apache.jasper.runtime.HttpJspBase
           out.write("\t\t\t\t\t\t\t<p>");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${auction.description }", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</p>\r\n");
+          out.write("\t\t\t\t\t\t\t<span class=\"price\">");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${auction.maxBidAmount }", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</span>\r\n");
           out.write("\t\t\t\t\t\t</div>\r\n");
           out.write("\t\t\t\t\t");
           int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();

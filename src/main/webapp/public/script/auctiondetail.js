@@ -1,25 +1,46 @@
  // auctiondetail.js
 $(document).ready( function(){
-	//alert("hello world");
-	data = $('#biddingform').serialize();
 	
 	$( "#biddingform" ).submit(function(event){
 		event.preventDefault();
-		//alert("hello World");
+		data = JSON.stringify(serializeObject($('#biddingform')));
+		//alert(data);
 		$.ajax({
 	 		url: '/makebid',
-	 		type: 'PUT',
+	 		type: 'Post',
+			data: data,
 			dataType: "json",
-			date: data,
+			contentType: 'application/json',
 			success: function(response){
- 		 		alert("Product Successfully added to the Cart!" + response);
-
+				console.log(response);
+				//$("#bidAmount").val();
+ 		 		alert("Your Bidding was successful!!!" + response);
 			},
-			error: function(){						
-				alert('Error while request..');
+			error: function(err){			
+				console.log(err);
+				alert('Error while request..' + err);
 			}
 		});
 	});
+	
+	function serializeObject (form)
+	{
+	    var jsonObject = {};
+	    var a = form.serializeArray();
+	    $.each(a, function() {
+	        if (jsonObject[this.name] !== undefined) {
+	            if (!jsonObject[this.name].push) {
+	            	jsonObject[this.name] = [jsonObject[this.name]];
+	            }
+	            jsonObject[this.name].push(this.value || '');
+	        } else {
+	        	jsonObject[this.name] = this.value || '';
+	        }
+	    });
+	    return jsonObject;
+	};
+	
+	
 	
 });
    	

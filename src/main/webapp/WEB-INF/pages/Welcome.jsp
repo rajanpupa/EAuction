@@ -43,6 +43,7 @@
 						<div class="auction" >
 							<a href="${detailUrl }"><p>${auction.title }</p></a>
 							<p>${auction.description }</p>
+							<span class="price">${auction.maxBidAmount }</span>
 						</div>
 					</c:forEach>
 					

@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.mum.waa.project.domain.Auction;
+import com.mum.waa.project.domain.Bid;
 import com.mum.waa.project.service.AuctionService;
 
 @Controller
@@ -25,8 +27,9 @@ public class WelcomeController {
 	
 	@RequestMapping("/auctionDetail/{pid}")
 	public String auctionDetail(Model model, @PathVariable("pid") String pid){
-		
-		model.addAttribute("auction", auctionService.getAuctionById(pid));
+		Auction auction = auctionService.getAuctionById(pid);
+		model.addAttribute("auction", auction);
+		model.addAttribute("bid", new Bid(auction.getId(), auction.getMaxBidAmount() + 1));
 		return "AuctionDetail";
 	}
 
