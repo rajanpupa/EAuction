@@ -5,17 +5,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.mum.waa.project.service.AuctionService;
 
 @Controller
-@RequestMapping("/")
+//@RequestMapping("/")
 public class WelcomeController {
 	
 	@Autowired
 	AuctionService auctionService;
 	
-	@RequestMapping("/")
+	@RequestMapping(value={"/","/welcome"}, method = RequestMethod.GET)
 	public String welcomePage(Model model){
 		
 		model.addAttribute("auctions", auctionService.getAllAuctions());

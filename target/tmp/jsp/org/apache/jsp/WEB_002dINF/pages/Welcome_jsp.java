@@ -13,6 +13,8 @@ public final class Welcome_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_spring_param_value_name_nobody;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_security_authorize_access;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_url_value_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_spring_url_var_value;
 
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
@@ -24,12 +26,16 @@ public final class Welcome_jsp extends org.apache.jasper.runtime.HttpJspBase
   public void _jspInit() {
     _jspx_tagPool_c_forEach_var_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_spring_param_value_name_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_security_authorize_access = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_c_url_value_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_spring_url_var_value = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
   }
 
   public void _jspDestroy() {
     _jspx_tagPool_c_forEach_var_items.release();
     _jspx_tagPool_spring_param_value_name_nobody.release();
+    _jspx_tagPool_security_authorize_access.release();
+    _jspx_tagPool_c_url_value_nobody.release();
     _jspx_tagPool_spring_url_var_value.release();
   }
 
@@ -60,6 +66,7 @@ public final class Welcome_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
+      out.write("\r\n");
       out.write("<!DOCTYPE HTML>\r\n");
       out.write("<html>\r\n");
       out.write("<head>\r\n");
@@ -73,6 +80,20 @@ public final class Welcome_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\t\t<div id=\"body\">\r\n");
       out.write("\t\t\t<p>Welcome to Welcome page.</p>\r\n");
+      out.write("\t\t\t\r\n");
+      out.write("\t\t\t\r\n");
+      out.write("\t\t\t");
+      if (_jspx_meth_security_authorize_0(_jspx_page_context))
+        return;
+      out.write("\r\n");
+      out.write("\t\t\t\r\n");
+      out.write("\t\t");
+      out.write("\r\n");
+      out.write("\t\t\t \r\n");
+      out.write("\t\t\t ");
+      if (_jspx_meth_security_authorize_1(_jspx_page_context))
+        return;
+      out.write("\r\n");
       out.write("\r\n");
       out.write("\t\t\t<p>This page is supposed to have all the auctions created. User\r\n");
       out.write("\t\t\t\tneed not be logged in to view this page.</p>\r\n");
@@ -110,6 +131,76 @@ public final class Welcome_jsp extends org.apache.jasper.runtime.HttpJspBase
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
+  }
+
+  private boolean _jspx_meth_security_authorize_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  security:authorize
+    org.springframework.security.taglibs.authz.JspAuthorizeTag _jspx_th_security_authorize_0 = (org.springframework.security.taglibs.authz.JspAuthorizeTag) _jspx_tagPool_security_authorize_access.get(org.springframework.security.taglibs.authz.JspAuthorizeTag.class);
+    _jspx_th_security_authorize_0.setPageContext(_jspx_page_context);
+    _jspx_th_security_authorize_0.setParent(null);
+    _jspx_th_security_authorize_0.setAccess("isAuthenticated()");
+    int _jspx_eval_security_authorize_0 = _jspx_th_security_authorize_0.doStartTag();
+    if (_jspx_eval_security_authorize_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      out.write("\r\n");
+      out.write("\t\t\t<div id = \"dropDowns\">\r\n");
+      out.write("\t\t\t <p>This is the dropdown. You should be authorized to see this.</p>\r\n");
+      out.write("\t\t\t</div>\r\n");
+      out.write("\t\t\t<p> <a href=\"");
+      if (_jspx_meth_c_url_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_security_authorize_0, _jspx_page_context))
+        return true;
+      out.write("\" > Logout</a> </p>\r\n");
+      out.write("\t\t\t");
+    }
+    if (_jspx_th_security_authorize_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_security_authorize_access.reuse(_jspx_th_security_authorize_0);
+      return true;
+    }
+    _jspx_tagPool_security_authorize_access.reuse(_jspx_th_security_authorize_0);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_url_0(javax.servlet.jsp.tagext.JspTag _jspx_th_security_authorize_0, PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:url
+    org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_url_0 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _jspx_tagPool_c_url_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
+    _jspx_th_c_url_0.setPageContext(_jspx_page_context);
+    _jspx_th_c_url_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_security_authorize_0);
+    _jspx_th_c_url_0.setValue("j_spring_security_logout");
+    int _jspx_eval_c_url_0 = _jspx_th_c_url_0.doStartTag();
+    if (_jspx_th_c_url_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_url_value_nobody.reuse(_jspx_th_c_url_0);
+      return true;
+    }
+    _jspx_tagPool_c_url_value_nobody.reuse(_jspx_th_c_url_0);
+    return false;
+  }
+
+  private boolean _jspx_meth_security_authorize_1(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  security:authorize
+    org.springframework.security.taglibs.authz.JspAuthorizeTag _jspx_th_security_authorize_1 = (org.springframework.security.taglibs.authz.JspAuthorizeTag) _jspx_tagPool_security_authorize_access.get(org.springframework.security.taglibs.authz.JspAuthorizeTag.class);
+    _jspx_th_security_authorize_1.setPageContext(_jspx_page_context);
+    _jspx_th_security_authorize_1.setParent(null);
+    _jspx_th_security_authorize_1.setAccess("isAnonymous()");
+    int _jspx_eval_security_authorize_1 = _jspx_th_security_authorize_1.doStartTag();
+    if (_jspx_eval_security_authorize_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      out.write("\r\n");
+      out.write("\t\t\t<p><a href=\"/spring_security_login\"> Login </a> </p>\r\n");
+      out.write("\t\t\t");
+    }
+    if (_jspx_th_security_authorize_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_security_authorize_access.reuse(_jspx_th_security_authorize_1);
+      return true;
+    }
+    _jspx_tagPool_security_authorize_access.reuse(_jspx_th_security_authorize_1);
+    return false;
   }
 
   private boolean _jspx_meth_c_forEach_0(PageContext _jspx_page_context)
