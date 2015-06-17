@@ -3,6 +3,7 @@ package com.mum.waa.project.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import com.mum.waa.project.domain.Auction;
@@ -14,6 +15,8 @@ public class AuctionServiceImpl implements AuctionService{
 	@Autowired
 	AuctionRepository auctionRepository;
 	
+	
+
 	@Override
 	public Iterable<Auction> getAllAuctions() {
 		// TODO Auto-generated method stub
