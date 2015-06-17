@@ -14,8 +14,10 @@ public final class Welcome_jsp extends org.apache.jasper.runtime.HttpJspBase
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_spring_param_value_name_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_security_authorize_access;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_form_select_path_name_id;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_url_value_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_spring_url_var_value;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_form_option_value;
 
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
@@ -27,16 +29,20 @@ public final class Welcome_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_tagPool_c_forEach_var_items = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_spring_param_value_name_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_security_authorize_access = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_form_select_path_name_id = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_c_url_value_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_spring_url_var_value = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_form_option_value = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
   }
 
   public void _jspDestroy() {
     _jspx_tagPool_c_forEach_var_items.release();
     _jspx_tagPool_spring_param_value_name_nobody.release();
     _jspx_tagPool_security_authorize_access.release();
+    _jspx_tagPool_form_select_path_name_id.release();
     _jspx_tagPool_c_url_value_nobody.release();
     _jspx_tagPool_spring_url_var_value.release();
+    _jspx_tagPool_form_option_value.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -67,6 +73,7 @@ public final class Welcome_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("\r\n");
       out.write("\r\n");
+      out.write("\r\n");
       out.write("<!DOCTYPE HTML>\r\n");
       out.write("<html>\r\n");
       out.write("<head>\r\n");
@@ -75,7 +82,16 @@ public final class Welcome_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("</head>\r\n");
       out.write("<body>\r\n");
       out.write("\t<div id=\"container\">\r\n");
-      out.write("\t\t<div id=\"navigation\">This is the Page Header.</div>\r\n");
+      out.write("\t\t<div id=\"navigation\">");
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "/WEB-INF/pages/common/settings1.jsp", out, false);
+      out.write("\r\n");
+      out.write("\t\t\r\n");
+      out.write("\t\t\t\t");
+      if (_jspx_meth_security_authorize_0(_jspx_page_context))
+        return;
+      out.write("\r\n");
+      out.write("\t\t\r\n");
+      out.write("\t\t</div>\r\n");
       out.write("\t\t<hr />\r\n");
       out.write("\r\n");
       out.write("\t\t<div id=\"body\">\r\n");
@@ -83,15 +99,123 @@ public final class Welcome_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t\r\n");
       out.write("\t\t\t\r\n");
       out.write("\t\t\t");
-      if (_jspx_meth_security_authorize_0(_jspx_page_context))
+      //  security:authorize
+      org.springframework.security.taglibs.authz.JspAuthorizeTag _jspx_th_security_authorize_1 = (org.springframework.security.taglibs.authz.JspAuthorizeTag) _jspx_tagPool_security_authorize_access.get(org.springframework.security.taglibs.authz.JspAuthorizeTag.class);
+      _jspx_th_security_authorize_1.setPageContext(_jspx_page_context);
+      _jspx_th_security_authorize_1.setParent(null);
+      _jspx_th_security_authorize_1.setAccess("isAuthenticated()");
+      int _jspx_eval_security_authorize_1 = _jspx_th_security_authorize_1.doStartTag();
+      if (_jspx_eval_security_authorize_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        out.write("\r\n");
+        out.write("\t\t\t<div id = \"dropDowns\">\r\n");
+        out.write("\t\t\t\r\n");
+        out.write("\t\t <form name=\"searchform\" id=\"searchform\" method=\"post\" action=\"/search\"  >\r\n");
+        out.write("\t\t\t ");
+        //  form:select
+        org.springframework.web.servlet.tags.form.SelectTag _jspx_th_form_select_0 = (org.springframework.web.servlet.tags.form.SelectTag) _jspx_tagPool_form_select_path_name_id.get(org.springframework.web.servlet.tags.form.SelectTag.class);
+        _jspx_th_form_select_0.setPageContext(_jspx_page_context);
+        _jspx_th_form_select_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_security_authorize_1);
+        _jspx_th_form_select_0.setId("category");
+        _jspx_th_form_select_0.setDynamicAttribute(null, "name", new String("categories"));
+        _jspx_th_form_select_0.setPath("categories");
+        int[] _jspx_push_body_count_form_select_0 = new int[] { 0 };
+        try {
+          int _jspx_eval_form_select_0 = _jspx_th_form_select_0.doStartTag();
+          if (_jspx_eval_form_select_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+            do {
+              out.write("\r\n");
+              out.write("                ");
+              //  form:option
+              org.springframework.web.servlet.tags.form.OptionTag _jspx_th_form_option_0 = (org.springframework.web.servlet.tags.form.OptionTag) _jspx_tagPool_form_option_value.get(org.springframework.web.servlet.tags.form.OptionTag.class);
+              _jspx_th_form_option_0.setPageContext(_jspx_page_context);
+              _jspx_th_form_option_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_select_0);
+              _jspx_th_form_option_0.setValue(new String("All"));
+              int[] _jspx_push_body_count_form_option_0 = new int[] { 0 };
+              try {
+                int _jspx_eval_form_option_0 = _jspx_th_form_option_0.doStartTag();
+                if (_jspx_eval_form_option_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+                  if (_jspx_eval_form_option_0 != javax.servlet.jsp.tagext.Tag.EVAL_BODY_INCLUDE) {
+                    out = _jspx_page_context.pushBody();
+                    _jspx_push_body_count_form_option_0[0]++;
+                    _jspx_th_form_option_0.setBodyContent((javax.servlet.jsp.tagext.BodyContent) out);
+                    _jspx_th_form_option_0.doInitBody();
+                  }
+                  do {
+                    out.write("All");
+                    int evalDoAfterBody = _jspx_th_form_option_0.doAfterBody();
+                    if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+                      break;
+                  } while (true);
+                  if (_jspx_eval_form_option_0 != javax.servlet.jsp.tagext.Tag.EVAL_BODY_INCLUDE)
+                    out = _jspx_page_context.popBody();
+                    _jspx_push_body_count_form_option_0[0]--;
+                }
+                if (_jspx_th_form_option_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+                  return;
+                }
+              } catch (Throwable _jspx_exception) {
+                while (_jspx_push_body_count_form_option_0[0]-- > 0)
+                  out = _jspx_page_context.popBody();
+                _jspx_th_form_option_0.doCatch(_jspx_exception);
+              } finally {
+                _jspx_th_form_option_0.doFinally();
+                _jspx_tagPool_form_option_value.reuse(_jspx_th_form_option_0);
+              }
+              out.write("\r\n");
+              out.write("                ");
+              if (_jspx_meth_c_forEach_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_form_select_0, _jspx_page_context, _jspx_push_body_count_form_select_0))
+                return;
+              out.write("\r\n");
+              out.write("\t    ");
+              int evalDoAfterBody = _jspx_th_form_select_0.doAfterBody();
+              if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+                break;
+            } while (true);
+          }
+          if (_jspx_th_form_select_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+            return;
+          }
+        } catch (Throwable _jspx_exception) {
+          while (_jspx_push_body_count_form_select_0[0]-- > 0)
+            out = _jspx_page_context.popBody();
+          _jspx_th_form_select_0.doCatch(_jspx_exception);
+        } finally {
+          _jspx_th_form_select_0.doFinally();
+          _jspx_tagPool_form_select_path_name_id.reuse(_jspx_th_form_select_0);
+        }
+        out.write("\r\n");
+        out.write("\t\t\t  <input type = \"text\" placeholder = \"Search Item\"/>\r\n");
+        out.write("\t\t\t   <input type=\"submit\"  value=\"Search\" />\r\n");
+        out.write("\t\t\t   \r\n");
+        out.write("\t\t\t   <!--  <select id = \"category\" name = \"category\">\r\n");
+        out.write("\t                <option value=\"My Dashboard\">My Dashboard</option>\r\n");
+        out.write("\t                <option value=\"FAQ\">FAQ</option>\r\n");
+        out.write("\t\t\t\t</select> -->\r\n");
+        out.write("\t\t  </form>\r\n");
+        out.write("\t\r\n");
+        out.write("\t\t\t\r\n");
+        out.write("\r\n");
+        out.write("\t\t\t\r\n");
+        out.write("\t\t\t <p>This is the dropdown. You should be authorized to see this.</p>\r\n");
+        out.write("\t\t\t</div>\r\n");
+        out.write("\t\t\t<p> <a href=\"");
+        if (_jspx_meth_c_url_1((javax.servlet.jsp.tagext.JspTag) _jspx_th_security_authorize_1, _jspx_page_context))
+          return;
+        out.write("\" > Logout</a> </p>\r\n");
+        out.write("\t\t\t");
+      }
+      if (_jspx_th_security_authorize_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        _jspx_tagPool_security_authorize_access.reuse(_jspx_th_security_authorize_1);
         return;
+      }
+      _jspx_tagPool_security_authorize_access.reuse(_jspx_th_security_authorize_1);
       out.write("\r\n");
       out.write("\t\t\t\r\n");
       out.write("\t\t");
       out.write("\r\n");
       out.write("\t\t\t \r\n");
       out.write("\t\t\t ");
-      if (_jspx_meth_security_authorize_1(_jspx_page_context))
+      if (_jspx_meth_security_authorize_2(_jspx_page_context))
         return;
       out.write("\r\n");
       out.write("\r\n");
@@ -101,7 +225,7 @@ public final class Welcome_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t<div>\r\n");
       out.write("\t\t\t\t<div id=\"auctions\" >\r\n");
       out.write("\t\t\t\t\t");
-      if (_jspx_meth_c_forEach_0(_jspx_page_context))
+      if (_jspx_meth_c_forEach_1(_jspx_page_context))
         return;
       out.write("\r\n");
       out.write("\t\t\t\t\t\r\n");
@@ -145,35 +269,11 @@ public final class Welcome_jsp extends org.apache.jasper.runtime.HttpJspBase
     int _jspx_eval_security_authorize_0 = _jspx_th_security_authorize_0.doStartTag();
     if (_jspx_eval_security_authorize_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       out.write("\r\n");
-      out.write("\t\t\t<div id = \"dropDowns\">\r\n");
-      out.write("\t\t\t\r\n");
-      out.write("\t\t <form name=\"searchform\" id=\"searchform\" method=\"get\" action=\"/search\"  >\r\n");
-      out.write("\t\t\t <select id = \"category\" name = \"category\">\r\n");
-      out.write("                <option value=\"volvo\">Volvo</option>\r\n");
-      out.write("                <option value=\"saab\">Saab</option>\r\n");
-      out.write("  \t\t\t\t<option value=\"mercedes\">Mercedes</option>\r\n");
-      out.write(" \t\t\t    <option value=\"audi\">Audi</option>\r\n");
-      out.write("\t\t\t</select>\r\n");
-      out.write("\t\t\t  <input type = \"text\" placeholder = \"Search Item\"/>\r\n");
-      out.write("\t\t\t   <input type=\"submit\"  value=\"Search\" />\r\n");
-      out.write("\t\t\t   \r\n");
-      out.write("\t\t\t    <select id = \"category\" name = \"category\">\r\n");
-      out.write("                <option value=\"volvo\">Volvo</option>\r\n");
-      out.write("                <option value=\"saab\">Saab</option>\r\n");
-      out.write("  \t\t\t\t<option value=\"mercedes\">Mercedes</option>\r\n");
-      out.write(" \t\t\t    <option value=\"audi\">Audi</option>\r\n");
-      out.write("\t\t\t</select>\r\n");
-      out.write("\t\t  </form>\r\n");
-      out.write("\t\t\t\r\n");
-      out.write("\r\n");
-      out.write("\t\t\t\r\n");
-      out.write("\t\t\t <p>This is the dropdown. You should be authorized to see this.</p>\r\n");
-      out.write("\t\t\t</div>\r\n");
-      out.write("\t\t\t<p> <a href=\"");
+      out.write("\t\t\t\t <a href=\"");
       if (_jspx_meth_c_url_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_security_authorize_0, _jspx_page_context))
         return true;
-      out.write("\" > Logout</a> </p>\r\n");
-      out.write("\t\t\t");
+      out.write("\" > Logout</a>\r\n");
+      out.write("\t\t\t\t");
     }
     if (_jspx_th_security_authorize_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
       _jspx_tagPool_security_authorize_access.reuse(_jspx_th_security_authorize_0);
@@ -201,63 +301,28 @@ public final class Welcome_jsp extends org.apache.jasper.runtime.HttpJspBase
     return false;
   }
 
-  private boolean _jspx_meth_security_authorize_1(PageContext _jspx_page_context)
-          throws Throwable {
-    PageContext pageContext = _jspx_page_context;
-    JspWriter out = _jspx_page_context.getOut();
-    //  security:authorize
-    org.springframework.security.taglibs.authz.JspAuthorizeTag _jspx_th_security_authorize_1 = (org.springframework.security.taglibs.authz.JspAuthorizeTag) _jspx_tagPool_security_authorize_access.get(org.springframework.security.taglibs.authz.JspAuthorizeTag.class);
-    _jspx_th_security_authorize_1.setPageContext(_jspx_page_context);
-    _jspx_th_security_authorize_1.setParent(null);
-    _jspx_th_security_authorize_1.setAccess("isAnonymous()");
-    int _jspx_eval_security_authorize_1 = _jspx_th_security_authorize_1.doStartTag();
-    if (_jspx_eval_security_authorize_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
-      out.write("\r\n");
-      out.write("\t\t\t<p><a href=\"/spring_security_login\"> Login </a> </p>\r\n");
-      out.write("\t\t\t");
-    }
-    if (_jspx_th_security_authorize_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
-      _jspx_tagPool_security_authorize_access.reuse(_jspx_th_security_authorize_1);
-      return true;
-    }
-    _jspx_tagPool_security_authorize_access.reuse(_jspx_th_security_authorize_1);
-    return false;
-  }
-
-  private boolean _jspx_meth_c_forEach_0(PageContext _jspx_page_context)
+  private boolean _jspx_meth_c_forEach_0(javax.servlet.jsp.tagext.JspTag _jspx_th_form_select_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_form_select_0)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  c:forEach
     org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_0 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
     _jspx_th_c_forEach_0.setPageContext(_jspx_page_context);
-    _jspx_th_c_forEach_0.setParent(null);
-    _jspx_th_c_forEach_0.setVar("auction");
-    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${auctions }", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_form_select_0);
+    _jspx_th_c_forEach_0.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${categories }", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_0.setVar("category");
     int[] _jspx_push_body_count_c_forEach_0 = new int[] { 0 };
     try {
       int _jspx_eval_c_forEach_0 = _jspx_th_c_forEach_0.doStartTag();
       if (_jspx_eval_c_forEach_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
         do {
           out.write("\r\n");
-          out.write("\t\t\t\t\t\t");
-          if (_jspx_meth_spring_url_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
-            return true;
-          out.write("\r\n");
-          out.write("\t\t\t\t\t\t<div class=\"auction\" >\r\n");
-          out.write("\t\t\t\t\t\t\t<a href=\"");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${detailUrl }", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("\"><p>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${auction.title }", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</p></a>\r\n");
-          out.write("\t\t\t\t\t\t\t<p>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${auction.description }", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</p>\r\n");
-          out.write("\t\t\t\t\t\t\t<span class=\"price\">");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${auction.maxBidAmount }", java.lang.String.class, (PageContext)_jspx_page_context, null));
-          out.write("</span>\r\n");
-          out.write("\t\t\t\t\t\t</div>\r\n");
-          out.write("\t\t\t\t\t");
+          out.write("                \t<option   value=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${category.id }", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" >");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${category.name }", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</option> \r\n");
+          out.write("                ");
           int evalDoAfterBody = _jspx_th_c_forEach_0.doAfterBody();
           if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
             break;
@@ -277,14 +342,108 @@ public final class Welcome_jsp extends org.apache.jasper.runtime.HttpJspBase
     return false;
   }
 
-  private boolean _jspx_meth_spring_url_0(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_0)
+  private boolean _jspx_meth_c_url_1(javax.servlet.jsp.tagext.JspTag _jspx_th_security_authorize_1, PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:url
+    org.apache.taglibs.standard.tag.rt.core.UrlTag _jspx_th_c_url_1 = (org.apache.taglibs.standard.tag.rt.core.UrlTag) _jspx_tagPool_c_url_value_nobody.get(org.apache.taglibs.standard.tag.rt.core.UrlTag.class);
+    _jspx_th_c_url_1.setPageContext(_jspx_page_context);
+    _jspx_th_c_url_1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_security_authorize_1);
+    _jspx_th_c_url_1.setValue("j_spring_security_logout");
+    int _jspx_eval_c_url_1 = _jspx_th_c_url_1.doStartTag();
+    if (_jspx_th_c_url_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_url_value_nobody.reuse(_jspx_th_c_url_1);
+      return true;
+    }
+    _jspx_tagPool_c_url_value_nobody.reuse(_jspx_th_c_url_1);
+    return false;
+  }
+
+  private boolean _jspx_meth_security_authorize_2(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  security:authorize
+    org.springframework.security.taglibs.authz.JspAuthorizeTag _jspx_th_security_authorize_2 = (org.springframework.security.taglibs.authz.JspAuthorizeTag) _jspx_tagPool_security_authorize_access.get(org.springframework.security.taglibs.authz.JspAuthorizeTag.class);
+    _jspx_th_security_authorize_2.setPageContext(_jspx_page_context);
+    _jspx_th_security_authorize_2.setParent(null);
+    _jspx_th_security_authorize_2.setAccess("isAnonymous()");
+    int _jspx_eval_security_authorize_2 = _jspx_th_security_authorize_2.doStartTag();
+    if (_jspx_eval_security_authorize_2 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      out.write("\r\n");
+      out.write("\t\t\t<p><a href=\"/spring_security_login\"> Login </a> </p>\r\n");
+      out.write("\t\t\t");
+    }
+    if (_jspx_th_security_authorize_2.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_security_authorize_access.reuse(_jspx_th_security_authorize_2);
+      return true;
+    }
+    _jspx_tagPool_security_authorize_access.reuse(_jspx_th_security_authorize_2);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_forEach_1(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_1.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_1.setParent(null);
+    _jspx_th_c_forEach_1.setVar("auction");
+    _jspx_th_c_forEach_1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${auctions }", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    int[] _jspx_push_body_count_c_forEach_1 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_1 = _jspx_th_c_forEach_1.doStartTag();
+      if (_jspx_eval_c_forEach_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\r\n");
+          out.write("\t\t\t\t\t\t");
+          if (_jspx_meth_spring_url_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_forEach_1, _jspx_page_context, _jspx_push_body_count_c_forEach_1))
+            return true;
+          out.write("\r\n");
+          out.write("\t\t\t\t\t\t<div class=\"auction\" >\r\n");
+          out.write("\t\t\t\t\t\t\t<a href=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${detailUrl }", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\"><p>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${auction.title }", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</p></a>\r\n");
+          out.write("\t\t\t\t\t\t\t<p>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${auction.description }", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</p>\r\n");
+          out.write("\t\t\t\t\t\t\t<span class=\"price\">");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${auction.maxBidAmount }", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</span>\r\n");
+          out.write("\t\t\t\t\t\t</div>\r\n");
+          out.write("\t\t\t\t\t");
+          int evalDoAfterBody = _jspx_th_c_forEach_1.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_1[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_1.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_1.doFinally();
+      _jspx_tagPool_c_forEach_var_items.reuse(_jspx_th_c_forEach_1);
+    }
+    return false;
+  }
+
+  private boolean _jspx_meth_spring_url_0(javax.servlet.jsp.tagext.JspTag _jspx_th_c_forEach_1, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_1)
           throws Throwable {
     PageContext pageContext = _jspx_page_context;
     JspWriter out = _jspx_page_context.getOut();
     //  spring:url
     org.springframework.web.servlet.tags.UrlTag _jspx_th_spring_url_0 = (org.springframework.web.servlet.tags.UrlTag) _jspx_tagPool_spring_url_var_value.get(org.springframework.web.servlet.tags.UrlTag.class);
     _jspx_th_spring_url_0.setPageContext(_jspx_page_context);
-    _jspx_th_spring_url_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_0);
+    _jspx_th_spring_url_0.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_forEach_1);
     _jspx_th_spring_url_0.setValue("auctionDetail/{auctionid}");
     _jspx_th_spring_url_0.setVar("detailUrl");
     int[] _jspx_push_body_count_spring_url_0 = new int[] { 0 };

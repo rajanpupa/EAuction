@@ -32,6 +32,9 @@ public class Auction {
 	
 	Boolean active=true;
 	
+	Category category;
+
+
 	public Boolean getActive() {
 		return active;
 	}
@@ -116,5 +119,14 @@ public class Auction {
 		this.endDate = endDate;
 	}
 	
+	
+	
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
 	
 }

@@ -1,10 +1,16 @@
 com\mum\waa\project\repository\AuctionRepository.class
+com\mum\waa\project\service\CategoryServiceImpl.class
 com\mum\waa\project\controller\AuthenticationController.class
 com\mum\waa\project\domain\Bid.class
 com\mum\waa\project\service\AuctionServiceImpl.class
 com\mum\waa\project\domain\Auction.class
+com\mum\waa\project\service\CategoryService.class
 com\mum\waa\project\controller\WelcomeController.class
+com\mum\waa\project\domain\Category.class
 com\mum\waa\project\controller\SearchController.class
 com\mum\waa\project\controller\UserController.class
+com\mum\waa\project\domain\Message.class
+com\mum\waa\project\repository\InMemoryCategoryRepositoryImpl.class
 com\mum\waa\project\service\AuctionService.class
+com\mum\waa\project\repository\CategoryRepository.class
 com\mum\waa\project\repository\InMemoryAuctionRepositoryImpl.class

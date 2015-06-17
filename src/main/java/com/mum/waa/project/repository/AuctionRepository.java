@@ -10,7 +10,7 @@ public interface AuctionRepository extends CrudRepository<Auction, String>{
 
 	public Auction findAuctionById(String id);
 	
-	public Iterable findAllAuctions();
+	public Iterable<Auction> findAllAuctions();
 	
 	public void saveAuction(Auction auction);
 	

@@ -2,6 +2,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -10,7 +11,13 @@
 </head>
 <body>
 	<div id="container">
-		<div id="navigation">This is the Page Header.</div>
+		<div id="navigation"><jsp:include page="/WEB-INF/pages/common/settings1.jsp"></jsp:include>
+		
+				<security:authorize access="isAuthenticated()">
+				 <a href="<c:url value="j_spring_security_logout" />" > Logout</a>
+				</security:authorize>
+		
+		</div>
 		<hr />
 
 		<div id="body">
@@ -20,29 +27,28 @@
 			<security:authorize access="isAuthenticated()">
 			<div id = "dropDowns">
 			
-		 <form name="searchform" id="searchform" method="get" action="/search"  >
-			 <select id = "category" name = "category">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-  				<option value="mercedes">Mercedes</option>
- 			    <option value="audi">Audi</option>
-			</select>
+		 <form name="searchform" id="searchform" method="post" action="/search"  >
+			 <form:select id = "category" name = "categories" path= "categories">
+                <form:option value="All">All</form:option>
+                <c:forEach items="${categories }" var="category">
+                	<option   value="${category.id }" >${category.name }</option> 
+                </c:forEach>
+	    </form:select>
 			  <input type = "text" placeholder = "Search Item"/>
 			   <input type="submit"  value="Search" />
 			   
-			    <select id = "category" name = "category">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-  				<option value="mercedes">Mercedes</option>
- 			    <option value="audi">Audi</option>
-			</select>
+			   <!--  <select id = "category" name = "category">
+	                <option value="My Dashboard">My Dashboard</option>
+	                <option value="FAQ">FAQ</option>
+				</select> -->
 		  </form>
+	
 			
 
 			
 			 <p>This is the dropdown. You should be authorized to see this.</p>
 			</div>
-			<p> <a href="<c:url value="j_spring_security_logout" />" > Logout</a> </p>
+			
 			</security:authorize>
 			
 		<%-- 	<p><c:url value="/spring_security_login" var="logoutUrl" /> </p>
