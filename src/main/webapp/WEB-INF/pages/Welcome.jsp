@@ -26,7 +26,6 @@
 					</security:authorize>
 
 
-			<security:authorize access="isAuthenticated()">
 				<div id="dropDowns">
 
 					<form name="searchform" id="searchform" method="post"
@@ -50,47 +49,28 @@
 
 
 					<p>This is the dropdown. You should be authorized to see this.</p>
+
+
+
+<div id="body">
+	<div>
+		<div id="auctions">
+			<c:forEach var="auction" items="${auctions }">
+				<spring:url value="auctionDetail/{auctionid}" var="detailUrl">
+					<spring:param name="auctionid" value="${auction.id }" />
+				</spring:url>
+				<div class="auction">
+					<a href="${detailUrl }"><p>${auction.title }</p></a>
+					<p>${auction.description }</p>
+					<span class="price">${auction.maxBidAmount }</span>
 				</div>
-
-			</security:authorize>
-
-			<%-- 	<p><c:url value="/spring_security_login" var="logoutUrl" /> </p>
-			 --%>
-
-			<security:authorize access="isAnonymous()">
-				<p>
-					<a href="/spring_security_login"> Login </a>
-				</p>
-			</security:authorize>
-
-			<p>This page is supposed to have all the auctions created. User
-				need not be logged in to view this page.</p>
-
-			<div>
-				<div id="auctions">
-					<c:forEach var="auction" items="${auctions }">
-						<spring:url value="auctionDetail/{auctionid}" var="detailUrl">
-							<spring:param name="auctionid" value="${auction.id }" />
-						</spring:url>
-						<div class="auction">
-							<a href="${detailUrl }"><p>${auction.title }</p></a>
-							<p>${auction.description }</p>
-							<span class="price">${auction.maxBidAmount }</span>
-						</div>
-					</c:forEach>
-
-				</div>
-
-				<br />
-			</div>
-			<br />
-			<hr />
-
+			</c:forEach>
 		</div>
-
-		<aside>Side bar</aside>
-
-		<div id="footer">Footer Area</div>
+		<br />
 	</div>
-</body>
-</html>
+	<br />
+	<hr />
+
+</div>
+
+<aside>Side bar</aside>

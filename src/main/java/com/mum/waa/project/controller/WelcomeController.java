@@ -1,11 +1,9 @@
 package com.mum.waa.project.controller;
 
-import java.util.Iterator;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,10 +27,15 @@ public class WelcomeController {
 	public String welcomePage(Model model){
 		
 		System.out.println(categoryService.getAllCategory());
+
 		
 		model.addAttribute("categories",categoryService.getAllCategory());
+
+		model.addAttribute("categories",categoryService.getAllCategory());
+		
+
 		model.addAttribute("auctions", auctionService.getAllAuctions());
-		return "Welcome";
+		return "welcome";
 	}
 	
 	@RequestMapping("/auctionDetail/{pid}")
@@ -40,12 +43,17 @@ public class WelcomeController {
 		Auction auction = auctionService.getAuctionById(pid);
 		model.addAttribute("auction", auction);
 		model.addAttribute("bid", new Bid(auction.getId(), auction.getMaxBidAmount() + 1));
-		return "AuctionDetail";
+		return "auctionDetail";
 	}
 
 	@RequestMapping("/test")
 	public String testPage(){
 		return "Test";
+	}
+	
+	@ModelAttribute("categories")
+	public Iterable<Category> getAllCategories(){
+		return categoryService.getAllCategory();
 	}
 	
 }

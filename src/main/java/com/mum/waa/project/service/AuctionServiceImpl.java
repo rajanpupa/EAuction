@@ -46,6 +46,7 @@ public class AuctionServiceImpl implements AuctionService{
 		auctionRepository.saveAuction(auction);
 	}
 
+	@PreAuthorize("hasRole('ROLE_USER')")
 	@Override
 	public Auction bid(String auctionId, Double bidAmount) {
 		

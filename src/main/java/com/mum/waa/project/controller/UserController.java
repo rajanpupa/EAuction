@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mum.waa.project.domain.Auction;
 import com.mum.waa.project.domain.Bid;
+import com.mum.waa.project.domain.Category;
 import com.mum.waa.project.domain.Message;
 import com.mum.waa.project.service.AuctionService;
 import com.mum.waa.project.service.CategoryService;
@@ -25,6 +26,7 @@ public class UserController {
 	@Autowired
 	CategoryService categoryService;
 	
+
 	@PreAuthorize("hasRole('ROLE_USER')")
 	@RequestMapping(value="/makebidtest",produces="application/json", method=RequestMethod.GET)
 	public @ResponseBody Message makeBid(){
@@ -74,7 +76,10 @@ public class UserController {
 		return "Dashboard";
 	}
 	
-
+	@ModelAttribute("categories")
+	public Iterable<Category> getAllCategories(){
+		return categoryService.getAllCategory();
+	}
 	
 	@RequestMapping("/Dashboard")
 	public String dashBoard()
