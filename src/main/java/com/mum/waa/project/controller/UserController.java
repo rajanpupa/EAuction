@@ -1,7 +1,6 @@
 package com.mum.waa.project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,15 +11,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mum.waa.project.domain.Auction;
 import com.mum.waa.project.domain.Bid;
+import com.mum.waa.project.domain.Category;
 import com.mum.waa.project.domain.Message;
 import com.mum.waa.project.service.AuctionService;
+import com.mum.waa.project.service.CategoryService;
 
 @Controller
 public class UserController {
 	@Autowired
 	AuctionService auctionService;
 	
-	@PreAuthorize("hasRole('ROLE_USER')")
+	@Autowired
+	CategoryService categoryService;
+	
 	@RequestMapping(value="/makebidtest",produces="application/json", method=RequestMethod.GET)
 	public @ResponseBody Message makeBid(){
 		Auction auction = auctionService.getAuctionById("P0001");
@@ -67,6 +70,9 @@ public class UserController {
 		return "Welcome";
 	}
 	
-
+	@ModelAttribute("categories")
+	public Iterable<Category> getAllCategories(){
+		return categoryService.getAllCategory();
+	}
 	
 }

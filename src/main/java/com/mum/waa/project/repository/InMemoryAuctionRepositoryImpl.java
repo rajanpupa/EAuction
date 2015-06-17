@@ -28,7 +28,7 @@ public class InMemoryAuctionRepositoryImpl implements AuctionRepository{
 		auction1.setTitle("Xps Laptop Third generation, 256SSD 8GB Ram i7");
 		auction1.setDescription("This laptop is covered by the Dell's In Home Service warranty until 4/2016. If Dell Tech Support is not able to resolve your issue via chat/phone they will send a Dell Certified Technician to your location in 1-2 business days to resolve the issue. This is the same warranty that Dell gives with a brand new laptop so you can be confident that you are protected.  After your purchase we shall email you instructions to transfer the warranty. The warranty can also be upgraded directly through Dell");
 		auction1.setMaxBidAmount(640.00);
-		auction1.setEndDate(new Date("07/20/2015"));
+		auction1.setEndDate(new Date("07/20/2015 20:00:00"));
 		auction1.setCategory(new Category("2","Computers and Laptops"));
 		
 		Auction auction2 = new Auction();

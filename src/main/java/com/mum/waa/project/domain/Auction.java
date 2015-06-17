@@ -26,7 +26,7 @@ public class Auction {
 	
 	Double maxBidAmount;
 	
-	Date CreatedDate;
+	Date createdDate=new Date();
 	
 	Date endDate;
 	
@@ -104,11 +104,11 @@ public class Auction {
 	}
 
 	public Date getCreatedDate() {
-		return CreatedDate;
+		return createdDate;
 	}
 
 	public void setCreatedDate(Date createdDate) {
-		CreatedDate = createdDate;
+		createdDate = createdDate;
 	}
 
 	public Date getEndDate() {
