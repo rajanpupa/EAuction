@@ -11,9 +11,10 @@
 </head>
 <body>
 	<div id="container">
+	<security:authorize access="isAuthenticated()">
 		<div id="navigation"><jsp:include page="/WEB-INF/pages/common/settings1.jsp"></jsp:include>
 		
-				<security:authorize access="isAuthenticated()">
+				
 				 <a href="<c:url value="j_spring_security_logout" />" > Logout</a>
 				</security:authorize>
 		
