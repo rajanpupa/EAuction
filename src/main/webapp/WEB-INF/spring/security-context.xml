@@ -18,6 +18,7 @@
 
    <security:http use-expressions = "true">
    		<security:intercept-url pattern="/login" access="hasRole('ROLE_USER')"/>
+   		<security:intercept-url pattern="/user" access="isAuthenticated()"/>
    		<security:form-login default-target-url="/welcome" 
    				always-use-default-target="true" 
    				 authentication-failure-url="/loginfailed"/>

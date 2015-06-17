@@ -14,11 +14,16 @@ import com.mum.waa.project.domain.Auction;
 import com.mum.waa.project.domain.Bid;
 import com.mum.waa.project.domain.Message;
 import com.mum.waa.project.service.AuctionService;
+import com.mum.waa.project.service.CategoryService;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
 	@Autowired
 	AuctionService auctionService;
+	
+	@Autowired
+	CategoryService categoryService;
 	
 	@PreAuthorize("hasRole('ROLE_USER')")
 	@RequestMapping(value="/makebidtest",produces="application/json", method=RequestMethod.GET)
@@ -57,6 +62,8 @@ public class UserController {
 	@RequestMapping("/createAuction")
 	public String createAuction(@ModelAttribute("auction") Auction auction,Model model) {
 		//model.addAttribute("auctions", auctionService.getAllAuctions());
+		model.addAttribute("categories", categoryService.getAllCategory());
+		System.out.println("Inside CreateAuction");
 		return "user/createAuction";
 	}
 	
@@ -64,9 +71,24 @@ public class UserController {
 	public String saveAuction(@ModelAttribute("auction") Auction auction, Model model) {
 		auctionService.saveAuction(auction); 
 		model.addAttribute("auctions", auctionService.getAllAuctions());
-		return "Welcome";
+		return "Dashboard";
 	}
 	
 
+	
+	@RequestMapping("/Dashboard")
+	public String dashBoard()
+	{
+		
+		return "Dashboard";
+	}
+	
+	@RequestMapping("/test")
+	public @ResponseBody String test()
+	{
+		System.out.println("I am here");
+		
+		return "This method is working";
+	}
 	
 }

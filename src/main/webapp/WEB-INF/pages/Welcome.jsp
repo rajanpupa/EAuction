@@ -3,11 +3,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Add Product Form</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Welcome page</title>
 <link rel="stylesheet" type="text/css" href="/public/style/main.css" />
 </head>
 <body>
@@ -15,12 +16,14 @@
 		<security:authorize access="isAuthenticated()">
 			<div id="navigation"><jsp:include
 					page="/WEB-INF/pages/common/settings1.jsp"></jsp:include>
-				<a href="<c:url value="j_spring_security_logout" />"> Logout</a>
+			
 		</security:authorize>
 		<hr />
 
 		<div id="body">
-			<p>Welcome to Welcome page.</p>
+			<security:authorize access="isAuthenticated()">
+			<p>Welcome : <security:authentication property="principal.username" />	<a href="<c:url value="j_spring_security_logout" />"> Logout</a></p>
+					</security:authorize>
 
 
 			<security:authorize access="isAuthenticated()">
