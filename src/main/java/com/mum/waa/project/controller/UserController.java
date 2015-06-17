@@ -1,6 +1,7 @@
 package com.mum.waa.project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,6 +20,7 @@ public class UserController {
 	@Autowired
 	AuctionService auctionService;
 	
+	@PreAuthorize("hasRole('ROLE_USER')")
 	@RequestMapping(value="/makebidtest",produces="application/json", method=RequestMethod.GET)
 	public @ResponseBody Message makeBid(){
 		Auction auction = auctionService.getAuctionById("P0001");
