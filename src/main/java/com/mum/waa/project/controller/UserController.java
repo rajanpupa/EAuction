@@ -85,7 +85,7 @@ public class UserController {
 	@RequestMapping(value="/saveAuction", method=RequestMethod.GET)
 	public @ResponseBody String getAuction( ) {
 		
-		return "I am working all right";
+		return "I am working all rights";
 	}
 	
 	@ModelAttribute("categories")
