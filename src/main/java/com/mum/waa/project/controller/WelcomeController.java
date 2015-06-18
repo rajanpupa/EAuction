@@ -27,8 +27,13 @@ public class WelcomeController {
 	public String welcomePage(Model model){
 		
 		System.out.println(categoryService.getAllCategory());
+
+		
+		model.addAttribute("categories",categoryService.getAllCategory());
+
 		model.addAttribute("categories",categoryService.getAllCategory());
 		
+
 		model.addAttribute("auctions", auctionService.getAllAuctions());
 		return "welcome";
 	}

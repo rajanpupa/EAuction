@@ -17,4 +17,4 @@ function serializeObject (form)
         }
     });
     return jsonObject;
-});
+};

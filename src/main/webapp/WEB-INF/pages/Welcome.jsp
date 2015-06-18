@@ -3,7 +3,54 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Welcome page</title>
+<link rel="stylesheet" type="text/css" href="/public/style/main.css" />
+</head>
+<body>
+	<div id="container">
+		<security:authorize access="isAuthenticated()">
+			<div id="navigation"><jsp:include
+					page="/WEB-INF/pages/common/settings1.jsp"></jsp:include>
+			
+		</security:authorize>
+		<hr />
+
+		<div id="body">
+			<security:authorize access="isAuthenticated()">
+			<p>Welcome : <security:authentication property="principal.username" />	<a href="<c:url value="j_spring_security_logout" />"> Logout</a></p>
+					</security:authorize>
+
+
+				<div id="dropDowns">
+
+					<form name="searchform" id="searchform" method="post"
+						action="/search">
+						<form:select id="category" name="categories" path="categories">
+							<form:option value="All">All</form:option>
+							<c:forEach items="${categories }" var="category">
+								<option value="${category.id }">${category.name }</option>
+							</c:forEach>
+						</form:select>
+						<input type="text" placeholder="Search Item" /> <input
+							type="submit" value="Search" />
+
+						<!--  <select id = "category" name = "category">
+	                <option value="My Dashboard">My Dashboard</option>
+	                <option value="FAQ">FAQ</option>
+				</select> -->
+					</form>
+
+
+
+
+					<p>This is the dropdown. You should be authorized to see this.</p>
+
+
 
 <div id="body">
 	<div>

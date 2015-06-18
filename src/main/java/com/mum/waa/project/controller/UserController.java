@@ -1,6 +1,7 @@
 package com.mum.waa.project.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,6 +18,7 @@ import com.mum.waa.project.service.AuctionService;
 import com.mum.waa.project.service.CategoryService;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
 	@Autowired
 	AuctionService auctionService;
@@ -60,6 +62,8 @@ public class UserController {
 	@RequestMapping("/createAuction")
 	public String createAuction(@ModelAttribute("auction") Auction auction,Model model) {
 		//model.addAttribute("auctions", auctionService.getAllAuctions());
+		model.addAttribute("categories", categoryService.getAllCategory());
+		System.out.println("Inside CreateAuction");
 		return "user/createAuction";
 	}
 	
@@ -67,12 +71,27 @@ public class UserController {
 	public String saveAuction(@ModelAttribute("auction") Auction auction, Model model) {
 		auctionService.saveAuction(auction); 
 		model.addAttribute("auctions", auctionService.getAllAuctions());
-		return "Welcome";
+		return "Dashboard";
 	}
 	
 	@ModelAttribute("categories")
 	public Iterable<Category> getAllCategories(){
 		return categoryService.getAllCategory();
+	}
+	
+	@RequestMapping("/Dashboard")
+	public String dashBoard()
+	{
+		
+		return "Dashboard";
+	}
+	
+	@RequestMapping("/test")
+	public @ResponseBody String test()
+	{
+		System.out.println("I am here");
+		
+		return "This method is working";
 	}
 	
 }
