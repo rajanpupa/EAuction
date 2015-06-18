@@ -12,7 +12,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 public class Bid implements Serializable {
 	@Id
-	@Size(min=6, max=32)
+	@Size(min=1, max=32)
 	String username;
 	
 	@NotEmpty

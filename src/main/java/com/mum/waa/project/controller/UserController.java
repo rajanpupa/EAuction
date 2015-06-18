@@ -1,7 +1,8 @@
 package com.mum.waa.project.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -41,7 +42,9 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/makebid",produces="application/json", method=RequestMethod.POST)
-	public @ResponseBody Message makeBid(@RequestBody Bid bid){
+	public @ResponseBody Message makeBid(@RequestBody Bid bid, Principal principal){
+		final String username=principal.getName();
+		bid.setUsername(username);
 		String id = bid.getAuctionId();
 		Double amount = bid.getBidAmount();
 		
@@ -62,16 +65,27 @@ public class UserController {
 	@RequestMapping("/createAuction")
 	public String createAuction(@ModelAttribute("auction") Auction auction,Model model) {
 		//model.addAttribute("auctions", auctionService.getAllAuctions());
+		System.out.println(categoryService.getAllCategory());
 		model.addAttribute("categories", categoryService.getAllCategory());
 		System.out.println("Inside CreateAuction");
-		return "user/createAuction";
+		return "createAuction";
 	}
 	
-	@RequestMapping("/saveAuction")
-	public String saveAuction(@ModelAttribute("auction") Auction auction, Model model) {
+	@RequestMapping(value="/saveAuction", method=RequestMethod.POST)
+	public String saveAuction(@ModelAttribute("auction") Auction auction, Model model, Principal principal) {
+		final String currentUser = principal.getName();
+		System.out.println("Auction Title = " + auction.getTitle());
+		
+		auction.getMaxBid().setUsername(currentUser);
 		auctionService.saveAuction(auction); 
 		model.addAttribute("auctions", auctionService.getAllAuctions());
 		return "Dashboard";
+	}
+	
+	@RequestMapping(value="/saveAuction", method=RequestMethod.GET)
+	public @ResponseBody String getAuction( ) {
+		
+		return "I am working all right";
 	}
 	
 	@ModelAttribute("categories")
@@ -79,7 +93,7 @@ public class UserController {
 		return categoryService.getAllCategory();
 	}
 	
-	@RequestMapping("/Dashboard")
+	@RequestMapping("/dashboard")
 	public String dashBoard()
 	{
 		

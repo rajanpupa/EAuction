@@ -5,6 +5,8 @@
 	uri="http://www.springframework.org/security/tags"%>
 
 <!-- Welcome page start  -->
+<p> <a href= "?language=en"> English </a> 
+<a href= "?language=np"> Nepali </a> </p>
 <div id="body">
 	<div>
 		<div id="auctions">

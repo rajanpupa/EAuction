@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -35,16 +36,18 @@ public class Auction implements Serializable{
 	
 	//Double maxBidAmount;
 	
-	@OneToOne
+	@OneToOne(cascade = {CascadeType.ALL})
 	Bid maxBid;
 	
-	Date createdDate=new Date();
+	@Transient
+	Date createdDate;
 	
+	@Transient
 	Date endDate;
 	
 	Boolean active=true;
 	
-	@OneToOne
+	@OneToOne(cascade={CascadeType.ALL})
 	Category category;
 
 	public Boolean getActive() {

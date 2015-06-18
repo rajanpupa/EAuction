@@ -5,7 +5,7 @@
 	<li><a href="/">About</a></li>
 	<li><a href="#">Account &#9662;</a>
 		<ul>
-			<li><a href="#">My DashBoard</a></li>
+			<li><a href="/user/dashboard">My DashBoard</a></li>
 			<li><a href="#">FAQ</a></li>
 			<li><a href="#">Settings</a></li>
 		</ul></li>

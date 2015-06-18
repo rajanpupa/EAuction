@@ -1,5 +1,7 @@
 package com.mum.waa.project.controller;
 
+import java.util.Iterator;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,45 +17,49 @@ import com.mum.waa.project.service.AuctionService;
 import com.mum.waa.project.service.CategoryService;
 
 @Controller
-//@RequestMapping("/")
+// @RequestMapping("/")
 public class WelcomeController {
-	
+
 	@Autowired
 	AuctionService auctionService;
 	@Autowired
 	CategoryService categoryService;
-	
-	@RequestMapping(value={"/","/welcome"}, method = RequestMethod.GET)
-	public String welcomePage(Model model){
-		
+
+	@RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
+	public String welcomePage(Model model) {
+
 		System.out.println(categoryService.getAllCategory());
+		Iterator<Category> it = categoryService.getAllCategory().iterator();
+		while (it.hasNext()) {
+			System.out.println("cat:" + it.next());
+		}
+		System.out.println("hello");
 
-		
-		model.addAttribute("categories",categoryService.getAllCategory());
+		model.addAttribute("categories", categoryService.getAllCategory());
 
-		model.addAttribute("categories",categoryService.getAllCategory());
-		
+		model.addAttribute("categories", categoryService.getAllCategory());
 
 		model.addAttribute("auctions", auctionService.getAllAuctions());
 		return "welcome";
 	}
-	
+
 	@RequestMapping("/auctionDetail/{pid}")
-	public String auctionDetail(Model model, @PathVariable("pid") String pid){
+	public String auctionDetail(Model model, @PathVariable("pid") String pid) {
 		Auction auction = auctionService.getAuctionById(pid);
 		model.addAttribute("auction", auction);
-		model.addAttribute("bid", new Bid("rajan", auction.getId(), auction.getMaxBid().getBidAmount() + 1));
+		model.addAttribute("bid", new Bid("rajan", auction.getId(), auction
+				.getMaxBid().getBidAmount() + 1));
 		return "auctionDetail";
 	}
 
 	@RequestMapping("/test")
-	public String testPage(){
+	public String testPage() {
 		return "Test";
 	}
-	
+
 	@ModelAttribute("categories")
-	public Iterable<Category> getAllCategories(){
+	public Iterable<Category> getAllCategories() {
 		return categoryService.getAllCategory();
 	}
-	
+
 }

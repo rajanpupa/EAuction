@@ -79,3 +79,9 @@ CREATE TABLE  `security`.`users` (
   PRIMARY KEY (`USERNAME`),
   UNIQUE KEY `USERNAME` (`USERNAME`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+
+insert into category(id, name)
+value('1', 'Computer'), ('2', 'mobiles and accessories'), ('3', 'vehicles and automobiles'),
+('4', 'arts and painting');

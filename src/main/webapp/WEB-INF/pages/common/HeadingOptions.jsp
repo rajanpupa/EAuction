@@ -4,15 +4,15 @@
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="security"%>
 <div id="dropDowns">
-	<form name="searchform" id="searchform" method="post" action="/search">
+	<form name="searchform" id="searchform" method="get" action="/search">
 		<form:select id="category" name="categories" path="categories">
 			<form:option value="All">All</form:option>
 			<c:forEach items="${categories }" var="category">
 				<option value="${category.id }">${category.name }</option>
 			</c:forEach>
 		</form:select>
-		<input type="text" placeholder="Search Item" /> <input type="submit"
-			value="Search" />
+		<input type="text" name="searchText" placeholder="Search Item" /> 
+		<input type="submit" value="Search" />
 	</form>
 </div>
 <security:authorize access="isAnonymous()">

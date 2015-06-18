@@ -13,10 +13,11 @@
       http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
 	<!-- Scan for transaction-based resources -->
-	<mvc:annotation-driven />
+<!-- 	<mvc:annotation-driven conversion-service="conversionService" /> -->
 	<context:component-scan base-package="com.mum.waa.project.service" />
 	<context:component-scan base-package="com.mum.waa.project.domain" />
 	<context:component-scan base-package="com.mum.waa.project.repository" />
+<!-- 	<context:component-scan base-package="com.mum.waa.project.formatter" /> -->
 
 	<jpa:repositories base-package="com.mum.waa.project.repository" />
 
@@ -29,7 +30,7 @@
 		</property>
 		<property name="jpaProperties">
 			<props>
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<!-- <prop key="hibernate.hbm2ddl.auto">create</prop> -->
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
 				<!-- <prop key="hibernate.hbm2ddl.import_files">sql/populate.sql</prop> -->
 			</props>
@@ -68,5 +69,16 @@
 
 	<bean id="persistenceExceptionTranslationPostProcessor"
 		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+
+	<!-- <bean id="conversionService"
+		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="formatters">
+			<set>
+				<bean class="com.mum.waa.project.formatter.DateFormatter">
+					<constructor-arg type="java.lang.String" value="MM-dd-yyyy" />
+				</bean>
+			</set>
+		</property>
+	</bean -->
 
 </beans>
