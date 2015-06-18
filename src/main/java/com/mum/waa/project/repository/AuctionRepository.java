@@ -8,11 +8,12 @@ import com.mum.waa.project.domain.Auction;
 @Repository
 public interface AuctionRepository extends CrudRepository<Auction, String>{
 
-	public Auction findAuctionById(String id);
+//	public Auction findOne(String id);
+//	
+//	public Iterable<Auction> findAll();
+//	
+//	public Auction save(Auction auction);
+//	
+//	public void delete(Auction auction);
 	
-	public Iterable<Auction> findAllAuctions();
-	
-	public void saveAuction(Auction auction);
-	
-	public void removeAuction(Auction auction);
 }

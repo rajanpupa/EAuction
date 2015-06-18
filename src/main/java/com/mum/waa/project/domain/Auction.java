@@ -1,31 +1,41 @@
 package com.mum.waa.project.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Transient;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlTransient;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
-public class Auction {
+public class Auction implements Serializable{
+//	Long 
 	
 	@Id
 	String id;
 	
+	@Column
+	@Size(min=5, max=200)
 	String title;
 	
 	String description;
 	
+	@Transient
 	List<String> specifications;
 	
 	Double minExpectedAmount;
 	
 	//Double maxBidAmount;
 	
+	@OneToOne
 	Bid maxBid;
 	
 	Date createdDate=new Date();
@@ -34,8 +44,8 @@ public class Auction {
 	
 	Boolean active=true;
 	
+	@OneToOne
 	Category category;
-
 
 	public Boolean getActive() {
 		return active;
@@ -46,6 +56,7 @@ public class Auction {
 	}
 
 	@JsonIgnore 
+	@Transient
 	private MultipartFile  productImage;
 
 	public String getId() {
@@ -97,8 +108,6 @@ public class Auction {
 		this.minExpectedAmount = minExpectedAmount;
 	}
 
-	
-
 	public Bid getMaxBid() {
 		return maxBid;
 	}
@@ -112,7 +121,7 @@ public class Auction {
 	}
 
 	public void setCreatedDate(Date createdDate) {
-		createdDate = createdDate;
+		this.createdDate = createdDate;
 	}
 
 	public Date getEndDate() {
@@ -122,8 +131,6 @@ public class Auction {
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
-	
-	
 	
 	public Category getCategory() {
 		return category;

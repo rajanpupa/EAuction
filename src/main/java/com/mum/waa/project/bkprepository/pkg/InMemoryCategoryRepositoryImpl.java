@@ -1,25 +1,20 @@
-package com.mum.waa.project.repository;
+package com.mum.waa.project.bkprepository.pkg;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.stereotype.Repository;
-
 import com.mum.waa.project.domain.Category;
+import com.mum.waa.project.repository.CategoryRepository;
 
-
-@Repository
+//@Repository
 public class InMemoryCategoryRepositoryImpl implements CategoryRepository{
-	
 	
 	Map<String, Category> categories;
 	
-	
 	public InMemoryCategoryRepositoryImpl()
 	{
-		
 		categories = new HashMap<String,Category>();
 		
 		Category category1 = new Category();
@@ -50,7 +45,7 @@ public class InMemoryCategoryRepositoryImpl implements CategoryRepository{
 	
 
 	@Override
-	public <S extends Category> S save(S entity) {
+	public Category save(Category entity) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -71,12 +66,6 @@ public class InMemoryCategoryRepositoryImpl implements CategoryRepository{
 	public boolean exists(String id) {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	@Override
-	public Iterable<Category> findAll() {
-	
-		return findAllCategories();
 	}
 
 	@Override
@@ -116,13 +105,7 @@ public class InMemoryCategoryRepositoryImpl implements CategoryRepository{
 	}
 
 	@Override
-	public Category findCategoryById(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Iterable<Category> findAllCategories() {
+	public Iterable<Category> findAll() {
 		// TODO Auto-generated method stub
         List<Category> categoryList = new ArrayList<Category>();
 		
@@ -133,16 +116,10 @@ public class InMemoryCategoryRepositoryImpl implements CategoryRepository{
 		return categoryList;
 	}
 
-	@Override
-	public void saveCategory(Category category) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void removeCategory(Category category) {
-		// TODO Auto-generated method stub
-		
-	}
+//	@Override
+//	public void remove(Category category) {
+//		// TODO Auto-generated method stub
+//		super.remove(category);
+//	}
 
 }

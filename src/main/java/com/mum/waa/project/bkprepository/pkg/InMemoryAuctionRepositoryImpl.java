@@ -1,4 +1,4 @@
-package com.mum.waa.project.repository;
+package com.mum.waa.project.bkprepository.pkg;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,13 +11,14 @@ import org.springframework.stereotype.Repository;
 import com.mum.waa.project.domain.Auction;
 import com.mum.waa.project.domain.Bid;
 import com.mum.waa.project.domain.Category;
+import com.mum.waa.project.repository.AuctionRepository;
 
 /**
  * InMemory repository for development purpose.
  * @author Rajan
  *
  */
-@Repository
+//@Repository
 public class InMemoryAuctionRepositoryImpl implements AuctionRepository{
 
 	Map<String,Auction> auctionsList = new HashMap<String, Auction>();
@@ -59,11 +60,6 @@ public class InMemoryAuctionRepositoryImpl implements AuctionRepository{
 	}
 
 	@Override
-	public void delete(Auction auction) {
-		auctionsList.remove(auction.getId());
-	}
-
-	@Override
 	public void delete(Iterable<? extends Auction> arg0) {
 		// TODO Auto-generated method stub
 	}
@@ -83,11 +79,6 @@ public class InMemoryAuctionRepositoryImpl implements AuctionRepository{
 	}
 
 	@Override
-	public Iterable<Auction> findAll() {
-		return findAllAuctions();
-	}
-
-	@Override
 	public Iterable<Auction> findAll(Iterable<String> arg0) {
 		return null;
 	}
@@ -98,22 +89,12 @@ public class InMemoryAuctionRepositoryImpl implements AuctionRepository{
 	}
 
 	@Override
-	public <S extends Auction> S save(S arg0) {
-		return null;
-	}
-
-	@Override
 	public <S extends Auction> Iterable<S> save(Iterable<S> arg0) {
 		return null;
 	}
 
 	@Override
-	public Auction findAuctionById(String id) {
-		return findOne(id);
-	}
-
-	@Override
-	public Iterable<Auction> findAllAuctions() {
+	public Iterable<Auction> findAll() {
 		List<Auction> aList = new ArrayList<Auction>();
 		
 		for(String key: auctionsList.keySet()){
@@ -124,12 +105,13 @@ public class InMemoryAuctionRepositoryImpl implements AuctionRepository{
 	}
 
 	@Override
-	public void saveAuction(Auction auction) {
+	public Auction save(Auction auction) {
 		auctionsList.put(auction.getId(), auction);
+		return auction;
 	}
 
 	@Override
-	public void removeAuction(Auction auction) {
+	public void delete(Auction auction) {
 		auctionsList.remove(auction.getId());
 	}
 

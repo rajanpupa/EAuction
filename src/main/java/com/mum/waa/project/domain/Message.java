@@ -1,6 +1,8 @@
 package com.mum.waa.project.domain;
 
-public class Message {
+import java.io.Serializable;
+
+public class Message implements Serializable{
 	
 	Boolean pass=true;
 	String message;
