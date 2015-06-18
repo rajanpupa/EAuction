@@ -6,7 +6,7 @@ $(document).ready( function(){
 		data = JSON.stringify(serializeObject($('#biddingform')));
 		//alert(data);
 		$.ajax({
-	 		url: '/makebid',
+	 		url: '/user/makebid',
 	 		type: 'Post',
 			data: data,
 			dataType: "json",
