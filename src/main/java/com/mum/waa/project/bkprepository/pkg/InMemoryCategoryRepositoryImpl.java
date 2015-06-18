@@ -18,7 +18,7 @@ public class InMemoryCategoryRepositoryImpl implements CategoryRepository{
 		categories = new HashMap<String,Category>();
 		
 		Category category1 = new Category();
-		category1.setId("1");
+		category1.setId("10");
 		category1.setName("Appliances");
 		
 		Category category2 = new Category();
