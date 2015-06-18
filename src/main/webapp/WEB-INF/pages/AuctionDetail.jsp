@@ -5,8 +5,6 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<div id="navigation">This is the Page Header.</div>
-<hr />
 
 <div id="body">
 
@@ -18,19 +16,19 @@
 		<h3>${auction.title }</h3>
 		<p>${auction.description }</p>
 
-		<form:form modelAttribute="bid" id="biddingform" method="post"
-			action="/makebid">
+		<form:form modelAttribute="bid" id="biddingform" method="POST" action="/user/makebid">
 			<form:input type="hidden" path="username"></form:input>
 			<form:input type="hidden" path="auctionId"></form:input>
 					Bid Amount: <span id="maxBid">$ ${auction.maxBid.bidAmount }</span>
 			<form:input type="text" path="bidAmount"></form:input>
 			<security:authorize access="isAuthenticated()">
-				<input type="submit" value="Make a Bid" />
+				<input id="makeBid" type="submit" value="Make a Bid" />
 			</security:authorize>
 			<security:authorize access="isAnonymous()">
 				<a href="/spring_security_login"> Login to make a bid </a>
 			</security:authorize>
 		</form:form>
+		<script src="/public/script/auctiondetail.js"></script>
 		<div id="startDate">
 			<fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss"
 				value="${auction.createdDate}" />
@@ -40,9 +38,4 @@
 				value="${auction.endDate}" />
 		</div>
 	</div>
-
 </div>
-
-<aside>Side bar</aside>
-
-<div id="footer">Footer Area</div>

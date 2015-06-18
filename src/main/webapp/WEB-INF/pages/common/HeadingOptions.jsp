@@ -24,6 +24,7 @@
 	<div id="navigation"><jsp:include
 			page="/WEB-INF/pages/common/settings1.jsp"></jsp:include>
 		<a href="<c:url value="j_spring_security_logout" />"> Logout</a>
+	</div>
 </security:authorize>
 <hr />
 <!-- end of headingoptions -->

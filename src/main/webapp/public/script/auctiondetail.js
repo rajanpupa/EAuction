@@ -1,13 +1,14 @@
  // auctiondetail.js
+// jquery should be imported first
+//<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 $(document).ready( function(){
-	
-	$( "#biddingform" ).submit(function(event){
+	$( '#biddingform' ).on('submit', function(event){
 		event.preventDefault();
 		data = JSON.stringify(serializeObject($('#biddingform')));
 		//alert(data);
 		$.ajax({
 	 		url: '/user/makebid',
-	 		type: 'Post',
+	 		type: 'POST',
 			data: data,
 			dataType: "json",
 			contentType: 'application/json',
@@ -29,8 +30,7 @@ $(document).ready( function(){
 		});
 	});
 	
-	function serializeObject (form)
-	{
+	function serializeObject (form){
 	    var jsonObject = {};
 	    var a = form.serializeArray();
 	    $.each(a, function() {
@@ -45,9 +45,6 @@ $(document).ready( function(){
 	    });
 	    return jsonObject;
 	};
-	
-	
-	
 });
    	
 
