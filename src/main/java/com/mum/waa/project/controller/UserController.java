@@ -24,7 +24,7 @@ public class UserController {
 	@Autowired
 	CategoryService categoryService;
 	
-	@RequestMapping(value="/makebidtest",produces="application/json", method=RequestMethod.GET)
+	/*@RequestMapping(value="/makebidtest",produces="application/json", method=RequestMethod.GET)
 	public @ResponseBody Message makeBid(){
 		Auction auction = auctionService.getAuctionById("P0001");
 		
@@ -36,7 +36,7 @@ public class UserController {
 			message.setPass(true);
 		}
 		return message;
-	}
+	}*/
 	
 	@RequestMapping(value="/makebid", method=RequestMethod.POST)
 	public @ResponseBody Message makeBid(@RequestBody Bid bid){

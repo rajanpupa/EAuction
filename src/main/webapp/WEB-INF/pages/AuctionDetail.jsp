@@ -20,6 +20,7 @@
 
 		<form:form modelAttribute="bid" id="biddingform" method="post"
 			action="/makebid">
+			<form:input type="hidden" path="username"></form:input>
 			<form:input type="hidden" path="auctionId"></form:input>
 					Bid Amount: <span id="maxBid">$ ${auction.maxBidAmount }</span>
 			<form:input type="text" path="bidAmount"></form:input>

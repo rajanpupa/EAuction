@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 
 @Entity
 public class Bid {
+	String username;
 	String auctionId;
 	Double bidAmount;
 	
@@ -14,6 +15,14 @@ public class Bid {
 		this.bidAmount = amount;
 	}
 	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
 	public String getAuctionId() {
 		return auctionId;
 	}
