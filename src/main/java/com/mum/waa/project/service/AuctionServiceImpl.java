@@ -54,10 +54,10 @@ public class AuctionServiceImpl implements AuctionService{
 		if(auction == null){
 			System.out.println("the auction is not found.");
 			return null;
-		}else if(bidAmount > auction.getMaxBidAmount()){
-			auction.setMaxBidAmount(bidAmount);
+		}else if(bidAmount > auction.getMaxBid().getBidAmount()){
+			auction.getMaxBid().setBidAmount(bidAmount);
 			
-			System.out.println("bid amount set to " + auction.getMaxBidAmount());
+			System.out.println("bid amount set to " + auction.getMaxBid().getBidAmount());
 			auctionRepository.saveAuction(auction);
 			return auction;
 		}else{

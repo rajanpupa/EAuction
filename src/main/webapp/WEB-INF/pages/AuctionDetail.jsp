@@ -22,7 +22,7 @@
 			action="/makebid">
 			<form:input type="hidden" path="username"></form:input>
 			<form:input type="hidden" path="auctionId"></form:input>
-					Bid Amount: <span id="maxBid">$ ${auction.maxBidAmount }</span>
+					Bid Amount: <span id="maxBid">$ ${auction.maxBid.bidAmount }</span>
 			<form:input type="text" path="bidAmount"></form:input>
 			<security:authorize access="isAuthenticated()">
 				<input type="submit" value="Make a Bid" />

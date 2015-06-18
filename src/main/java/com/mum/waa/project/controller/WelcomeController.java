@@ -42,7 +42,7 @@ public class WelcomeController {
 	public String auctionDetail(Model model, @PathVariable("pid") String pid){
 		Auction auction = auctionService.getAuctionById(pid);
 		model.addAttribute("auction", auction);
-		model.addAttribute("bid", new Bid(auction.getId(), auction.getMaxBidAmount() + 1));
+		model.addAttribute("bid", new Bid("rajan", auction.getId(), auction.getMaxBid().getBidAmount() + 1));
 		return "auctionDetail";
 	}
 

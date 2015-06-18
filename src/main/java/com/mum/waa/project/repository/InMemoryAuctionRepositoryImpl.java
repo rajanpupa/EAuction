@@ -9,8 +9,14 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import com.mum.waa.project.domain.Auction;
+import com.mum.waa.project.domain.Bid;
 import com.mum.waa.project.domain.Category;
 
+/**
+ * InMemory repository for development purpose.
+ * @author Rajan
+ *
+ */
 @Repository
 public class InMemoryAuctionRepositoryImpl implements AuctionRepository{
 
@@ -19,27 +25,24 @@ public class InMemoryAuctionRepositoryImpl implements AuctionRepository{
 	
 	public InMemoryAuctionRepositoryImpl(){
 		
-		
-
-		
+		Bid bid1 = new Bid("user1", "P0001", 640D);
 		Auction auction1 = new Auction();
 		
 		auction1.setId("P0001");
 		auction1.setTitle("Xps Laptop Third generation, 256SSD 8GB Ram i7");
 		auction1.setDescription("This laptop is covered by the Dell's In Home Service warranty until 4/2016. If Dell Tech Support is not able to resolve your issue via chat/phone they will send a Dell Certified Technician to your location in 1-2 business days to resolve the issue. This is the same warranty that Dell gives with a brand new laptop so you can be confident that you are protected.  After your purchase we shall email you instructions to transfer the warranty. The warranty can also be upgraded directly through Dell");
-		auction1.setMaxBidAmount(640.00);
+		auction1.setMaxBid(bid1);;
 		auction1.setEndDate(new Date("07/20/2015 20:00:00"));
 		auction1.setCategory(new Category("2","Computers and Laptops"));
 		
 		Auction auction2 = new Auction();
+		Bid bid2 = new Bid("user2", "P0002", 453D);
 		
 		auction2.setId("MilkyWay Galaxy");
 		auction2.setTitle("Android Mobile 4th Generation, 256SSD 8GB Ram i7");
 		auction2.setDescription("This Mobile  is covered by the Andorid's In Home Service warranty until 4/2016. If Android Tech Support is not able to resolve your issue via chat/phone they will send a Dell Certified Technician to your location in 1-2 business days to resolve the issue. This is the same warranty that Dell gives with a brand new laptop so you can be confident that you are protected.  After your purchase we shall email you instructions to transfer the warranty. The warranty can also be upgraded directly through Android");
-		auction2.setMaxBidAmount(530.00);
+		auction2.setMaxBid(bid2);
 		auction2.setCategory(new Category("4","Mobile and Accessories"));
-		
-		
 		
 		auctionsList.put(auction1.getId(), auction1);
 		auctionsList.put(auction2.getId(), auction2);
@@ -67,7 +70,6 @@ public class InMemoryAuctionRepositoryImpl implements AuctionRepository{
 
 	@Override
 	public void deleteAll() {
-		// TODO Auto-generated method stub
 		auctionsList.clear();
 	}
 
@@ -82,43 +84,36 @@ public class InMemoryAuctionRepositoryImpl implements AuctionRepository{
 
 	@Override
 	public Iterable<Auction> findAll() {
-		// TODO Auto-generated method stub
 		return findAllAuctions();
 	}
 
 	@Override
 	public Iterable<Auction> findAll(Iterable<String> arg0) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Auction findOne(String key) {
-		// TODO Auto-generated method stub
 		return auctionsList.get(key);
 	}
 
 	@Override
 	public <S extends Auction> S save(S arg0) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public <S extends Auction> Iterable<S> save(Iterable<S> arg0) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Auction findAuctionById(String id) {
-		// TODO Auto-generated method stub
 		return findOne(id);
 	}
 
 	@Override
 	public Iterable<Auction> findAllAuctions() {
-		// TODO Auto-generated method stub
 		List<Auction> aList = new ArrayList<Auction>();
 		
 		for(String key: auctionsList.keySet()){
@@ -130,13 +125,11 @@ public class InMemoryAuctionRepositoryImpl implements AuctionRepository{
 
 	@Override
 	public void saveAuction(Auction auction) {
-		// TODO Auto-generated method stub
 		auctionsList.put(auction.getId(), auction);
 	}
 
 	@Override
 	public void removeAuction(Auction auction) {
-		// TODO Auto-generated method stub
 		auctionsList.remove(auction.getId());
 	}
 

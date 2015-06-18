@@ -54,7 +54,7 @@ public class UserController {
 		}else{
 			message.setPass(true);
 			message.setMessage("Bidding succeed");
-			message.setResult(auction.getMaxBidAmount().toString());
+			message.setResult(auction.getMaxBid().getBidAmount().toString());
 		}
 		return message;
 	}

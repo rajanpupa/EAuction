@@ -24,7 +24,9 @@ public class Auction {
 	
 	Double minExpectedAmount;
 	
-	Double maxBidAmount;
+	//Double maxBidAmount;
+	
+	Bid maxBid;
 	
 	Date createdDate=new Date();
 	
@@ -95,12 +97,14 @@ public class Auction {
 		this.minExpectedAmount = minExpectedAmount;
 	}
 
-	public Double getMaxBidAmount() {
-		return maxBidAmount;
+	
+
+	public Bid getMaxBid() {
+		return maxBid;
 	}
 
-	public void setMaxBidAmount(Double maxBidAmount) {
-		this.maxBidAmount = maxBidAmount;
+	public void setMaxBid(Bid maxBid) {
+		this.maxBid = maxBid;
 	}
 
 	public Date getCreatedDate() {

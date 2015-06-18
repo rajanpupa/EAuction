@@ -10,7 +10,8 @@ public class Bid {
 	
 	public Bid(){}
 	
-	public Bid(String id, Double amount){
+	public Bid(String username, String id, Double amount){
+		this.username = username;
 		this.auctionId = id;
 		this.bidAmount = amount;
 	}
