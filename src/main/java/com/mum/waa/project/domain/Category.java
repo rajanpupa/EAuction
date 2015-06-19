@@ -3,14 +3,20 @@ package com.mum.waa.project.domain;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
-@Entity
+@Entity(name="CATEGORY")
 public class Category implements Serializable{
+	
+	private static final long serialVersionUID = 3L;
 
 	@Id
-	private String id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer id;
+	
 	private String name;
 	
 	public Category()
@@ -18,17 +24,17 @@ public class Category implements Serializable{
 		
 	}
 	
-	public Category(String id, String name)
+	public Category(Integer id, String name)
 	{
 		this.id = id;
 		this.name = name;
 	}
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

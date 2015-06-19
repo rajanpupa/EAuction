@@ -18,10 +18,14 @@ public class SearchController {
 	AuctionService auctionService;
 	
 	@RequestMapping("/search")
-	public String Search(@RequestParam("categories") String category, 
-			@RequestParam("searchText") String search,
-			Model model)
+	public String Search(
+//			@RequestParam("categories") String category, 
+//			@RequestParam("searchText") String search,
+			Model model
+			)
 	{
+		
+		String search="xps";
 		auctionService.getAllAuctions();
 		
 		List<Auction> result = new ArrayList<Auction>();

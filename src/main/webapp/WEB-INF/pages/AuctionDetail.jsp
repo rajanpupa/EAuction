@@ -19,7 +19,11 @@
 		<form:form modelAttribute="bid" id="biddingform" method="POST" action="/user/makebid">
 			<form:input type="hidden" path="username"></form:input>
 			<form:input type="hidden" path="auctionId"></form:input>
-					Bid Amount: <span id="maxBid">$ ${auction.maxBid.bidAmount }</span>
+					Bid Amount: 
+					<span id="maxBid">
+					<c:if test="${maxBid eq null }">There are no bids yet.</c:if>
+					<c:if test="${maxBid ne null }">$${maxBid.bidAmount }</c:if>
+					</span>
 			<form:input type="text" path="bidAmount"></form:input>
 			<security:authorize access="isAuthenticated()">
 				<input id="makeBid" type="submit" value="Make a Bid" />

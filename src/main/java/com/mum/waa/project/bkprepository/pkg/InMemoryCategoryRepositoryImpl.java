@@ -11,26 +11,26 @@ import com.mum.waa.project.repository.CategoryRepository;
 //@Repository
 public class InMemoryCategoryRepositoryImpl implements CategoryRepository{
 	
-	Map<String, Category> categories;
+	Map<Integer, Category> categories;
 	
 	public InMemoryCategoryRepositoryImpl()
 	{
-		categories = new HashMap<String,Category>();
+		categories = new HashMap<Integer,Category>();
 		
 		Category category1 = new Category();
-		category1.setId("1");
+		category1.setId(1);
 		category1.setName("Appliances");
 		
 		Category category2 = new Category();
-		category2.setId("2");
+		category2.setId(2);
 		category2.setName("Computers and Laptops");
 		
 		Category category3 = new Category();
-		category3.setId("3");
+		category3.setId(3);
 		category3.setName("Arts, Craft and Sewing");
 		
 		Category category4 = new Category();
-		category4.setId("4");
+		category4.setId(4);
 		category4.setName("Mobile and Accessories");
 		
 		
@@ -57,19 +57,19 @@ public class InMemoryCategoryRepositoryImpl implements CategoryRepository{
 	}
 
 	@Override
-	public Category findOne(String id) {
+	public Category findOne(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean exists(String id) {
+	public boolean exists(Integer id) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public Iterable<Category> findAll(Iterable<String> ids) {
+	public Iterable<Category> findAll(Iterable<Integer> ids) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -81,7 +81,7 @@ public class InMemoryCategoryRepositoryImpl implements CategoryRepository{
 	}
 
 	@Override
-	public void delete(String id) {
+	public void delete(Integer id) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -109,7 +109,7 @@ public class InMemoryCategoryRepositoryImpl implements CategoryRepository{
 		// TODO Auto-generated method stub
         List<Category> categoryList = new ArrayList<Category>();
 		
-		for(String key: categories.keySet()){
+		for(Integer key: categories.keySet()){
 			categoryList.add(categories.get(key));
 		}
 		

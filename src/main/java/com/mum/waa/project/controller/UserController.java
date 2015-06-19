@@ -64,19 +64,27 @@ public class UserController {
 	
 	@RequestMapping("/createAuction")
 	public String createAuction(@ModelAttribute("auction") Auction auction,Model model) {
-		//model.addAttribute("auctions", auctionService.getAllAuctions());
-		System.out.println(categoryService.getAllCategory());
 		model.addAttribute("categories", categoryService.getAllCategory());
-		System.out.println("Inside CreateAuction");
 		return "createAuction";
 	}
 	
 	@RequestMapping(value="/saveAuction", method=RequestMethod.POST)
 	public String saveAuction(@ModelAttribute("auction") Auction auction, Model model, Principal principal) {
 		final String currentUser = principal.getName();
+		
+		System.out.println("Auction Id = " + auction.getId());
 		System.out.println("Auction Title = " + auction.getTitle());
 		
-		auction.getMaxBid().setUsername(currentUser);
+		Bid bid = auction.getMaxBid();
+		if(bid!=null){
+			bid.setUsername(currentUser);
+		}else{
+			bid=new Bid(currentUser, auction.getId(), auction.getMinExpectedAmount());
+			auction.setMaxBid(bid);
+		}
+		
+		auction.getCategory().setName(categoryService.getCategoryById(auction.getCategory().getId()).getName());
+		
 		auctionService.saveAuction(auction); 
 		model.addAttribute("auctions", auctionService.getAllAuctions());
 		return "Dashboard";

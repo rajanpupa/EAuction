@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.mum.waa.project.domain.Category;
 
 @Repository
-public interface CategoryRepository  extends CrudRepository<Category, String>{
+public interface CategoryRepository  extends CrudRepository<Category, Integer>{
 	
 //	public Category findOne(String id);
 //	

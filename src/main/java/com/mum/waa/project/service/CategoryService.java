@@ -7,7 +7,7 @@ public interface CategoryService {
 	
 	public Iterable<Category> getAllCategory();
 	
-	public Category getCategoryById(String categoryId);
+	public Category getCategoryById(Integer categoryId);
 	
 	public void saveCategory(Category category);
 	

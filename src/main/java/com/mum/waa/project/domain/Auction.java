@@ -18,7 +18,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 public class Auction implements Serializable{
-//	Long 
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	String id;
@@ -29,12 +30,10 @@ public class Auction implements Serializable{
 	
 	String description;
 	
-	@Transient
-	List<String> specifications;
+	@OneToOne(cascade={CascadeType.ALL})
+	Category category;
 	
 	Double minExpectedAmount;
-	
-	//Double maxBidAmount;
 	
 	@OneToOne(cascade = {CascadeType.ALL})
 	Bid maxBid;
@@ -45,10 +44,8 @@ public class Auction implements Serializable{
 	@Transient
 	Date endDate;
 	
+	@Transient
 	Boolean active=true;
-	
-	@OneToOne(cascade={CascadeType.ALL})
-	Category category;
 
 	public Boolean getActive() {
 		return active;
@@ -86,14 +83,6 @@ public class Auction implements Serializable{
 		this.description = description;
 	}
 	
-	public List<String> getSpecifications() {
-		return specifications;
-	}
-
-	public void setSpecifications(List<String> specifications) {
-		this.specifications = specifications;
-	}
-
 	@XmlTransient  
 	public MultipartFile getProductImage() {
 		return productImage;

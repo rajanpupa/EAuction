@@ -25,7 +25,7 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public Category getCategoryById(String categoryId) {
+	public Category getCategoryById(Integer categoryId) {
 		// TODO Auto-generated method stub
 		return categoryRepository.findOne(categoryId);
 	}
