@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mum.waa.project.domain.Auction;
 import com.mum.waa.project.domain.Category;
@@ -25,26 +26,26 @@ public class SearchController {
 	
 	@RequestMapping("/search")
 	public String Search(
-//			@RequestParam("categories") String category, 
-//			@RequestParam("searchText") String search,
+			@RequestParam("categories") String category, 
+			@RequestParam("searchText") String search,
 			Model model
 			)
 	{
 		
-		String search="xps";
-		auctionService.getAllAuctions();
+		//String search="xps";
+		auctionService.getAuctionByCategory(category);
 		
 		List<Auction> result = new ArrayList<Auction>();
 		
 		for(Auction a : auctionService.getAllAuctions()){
-			if(a.getTitle().contains(search)){
+			if(a.getTitle().toLowerCase().contains(search.toLowerCase())){
 				result.add(a);
 			}
 		}
 		
 		model.addAttribute("auctions", result);
 		
-		return "welcome";
+		return "searchResult";
 	}
 	
 	@RequestMapping("/search/category/{category}")
