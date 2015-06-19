@@ -1,5 +1,6 @@
 package com.mum.waa.project.repository;
 
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -15,5 +16,8 @@ public interface AuctionRepository extends CrudRepository<Auction, String>{
 //	public Auction save(Auction auction);
 //	
 //	public void delete(Auction auction);
+	
+	@Query //("select a from Auction a where a.category.name=:categoryName")
+	public Iterable<Auction> findAuctionByCategoryName(String categoryName);
 	
 }

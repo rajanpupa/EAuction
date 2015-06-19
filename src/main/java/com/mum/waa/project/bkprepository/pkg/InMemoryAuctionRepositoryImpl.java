@@ -115,4 +115,10 @@ public class InMemoryAuctionRepositoryImpl implements AuctionRepository{
 		auctionsList.remove(auction.getId());
 	}
 
+	@Override
+	public Iterable<Auction> findAuctionByCategoryName(String category) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -67,4 +67,10 @@ public class AuctionServiceImpl implements AuctionService{
 		}
 	}
 
+	@Override
+	public Iterable<Auction> getAuctionByCategory(String category) {
+		// TODO Auto-generated method stub
+		return auctionRepository.findAuctionByCategoryName(category);
+	}
+
 }

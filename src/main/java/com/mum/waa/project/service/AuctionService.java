@@ -17,4 +17,6 @@ public interface AuctionService {
 	public void disableAuction(Auction auction);
 	
 	public Auction bid(String auctionId, Double bidAmount);
+	
+	public Iterable<Auction> getAuctionByCategory(String category);
 }

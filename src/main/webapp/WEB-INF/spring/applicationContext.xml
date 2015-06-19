@@ -31,10 +31,10 @@
 		<property name="jpaProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
-				<prop key="hibernate.hbm2ddl.auto">create</prop>
+				<!-- <prop key="hibernate.hbm2ddl.auto">create</prop>
 				<prop key="hibernate.hbm2ddl.import_files">
 					 mysql/users.sql,mysql/categories.sql
-				</prop>
+				</prop> -->
 			</props>
 		</property>
 	</bean>

@@ -55,6 +55,13 @@
 		<put-attribute name="body" value="/WEB-INF/pages/user/CreateAuction.jsp" />
 	</definition>
 	
+	<definition name="searchResult" extends="baseLayout">
+		<put-attribute name="title" value="Searched Auctions" />
+		<put-attribute name="heading" value="Auctions" />
+		<put-attribute name="tagline" value="auctions" />
+		<put-attribute name="body" value="/WEB-INF/pages/Welcome.jsp" />
+	</definition>
+	
 	<definition name="productNotFound" extends="baseLayout">
 		<put-attribute name="title" value="Product Exception" />
  		<put-attribute name="body" value="/WEB-INF/views/productNotFound.jsp" />
