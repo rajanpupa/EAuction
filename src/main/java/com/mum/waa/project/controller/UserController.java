@@ -1,6 +1,9 @@
 package com.mum.waa.project.controller;
 
+import java.io.File;
 import java.security.Principal;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.mum.waa.project.domain.Auction;
 import com.mum.waa.project.domain.Bid;
@@ -69,7 +73,9 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/saveAuction", method=RequestMethod.POST)
-	public String saveAuction(@ModelAttribute("auction") Auction auction, Model model, Principal principal) {
+	public String saveAuction(
+			@ModelAttribute("auction") Auction auction,Model model,Principal principal,
+			HttpServletRequest request	) {
 		final String currentUser = principal.getName();
 		
 		System.out.println("Auction Id = " + auction.getId());
@@ -83,7 +89,25 @@ public class UserController {
 			auction.setMaxBid(bid);
 		}
 		
-		auction.getCategory().setName(categoryService.getCategoryById(auction.getCategory().getId()).getName());
+		MultipartFile productImage = auction.getProductImage();
+		String rootDirectory = request.getSession().getServletContext()
+				.getRealPath("/");
+
+		if (productImage != null && !productImage.isEmpty()) {
+			try {
+				productImage.transferTo(new File(rootDirectory
+						+ "\\resources\\images\\"
+						+ auction.getId() + ".png"));
+			} catch (Exception e) {
+				throw new RuntimeException("Product Image saving failed", e);
+			}
+		}
+		Category category = auction.getCategory();
+		if(category==null){
+			System.out.println("category is null");
+		}
+		Category dbCategory = categoryService.getCategoryById(category.getId());
+		auction.setCategory(dbCategory);
 		
 		auctionService.saveAuction(auction); 
 		model.addAttribute("auctions", auctionService.getAllAuctions());

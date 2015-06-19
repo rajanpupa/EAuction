@@ -2,7 +2,14 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="ISO-8859-1"%>
-<form:form modelAttribute="auction" method="POST" action="/user/saveAuction">
+<div id="createAuctionForm" class="fullForm">
+
+<div id="image" style="margin: 0 auto; min-height: 200px; min-width: 200px;">
+	<img src="" alt="product Image">No Images Uploaded yet</img>
+</div>
+<div id="form" >
+<form:form modelAttribute="auction" method="POST" action="/user/saveAuction" >
+<!-- enctype="multipart/form-data" -->
 	<table>
 		<tr>
 			<td><spring:message code="label.Id" text="default text" /></td>
@@ -21,13 +28,20 @@
 			<form:errors	path="description" cssStyle="color : red;" /></td>
 		</tr>
 
+		<%-- <tr>
+			<td><spring:message code="label.Image" text="default text" /></td>
+			<td><form:input id="productImage" path="productImage" type="file" class="form:input-large" />
+			<form:errors	path="productImage" cssStyle="color : red;" /></td>
+		</tr> --%>
+		
+		
 		<tr>
-		<td><spring:message code="label.Category" text="default text" /></td>
+			<td><spring:message code="label.Category" text="default text" /></td>
 			<td><form:select id="category"  path="category.id">
 					<c:forEach items="${categories}" var="category">
 						<option value="${category.id }">${category.name }</option>
 					</c:forEach>
-				</form:select>
+				</form:select></td>
 		</tr> 
 
 		<tr>
@@ -56,3 +70,5 @@
 
 	</table>
 </form:form>
+</div>
+</div>

@@ -11,12 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 import org.springframework.web.multipart.MultipartFile;
 
-@Entity
+@XmlRootElement 
+@Entity(name="AUCTION")
 public class Auction implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -46,6 +48,10 @@ public class Auction implements Serializable{
 	
 	@Transient
 	Boolean active=true;
+	
+	@JsonIgnore
+	@Transient
+	private MultipartFile  productImage;
 
 	public Boolean getActive() {
 		return active;
@@ -54,10 +60,6 @@ public class Auction implements Serializable{
 	public void setActive(Boolean active) {
 		this.active = active;
 	}
-
-	@JsonIgnore 
-	@Transient
-	private MultipartFile  productImage;
 
 	public String getId() {
 		return id;
