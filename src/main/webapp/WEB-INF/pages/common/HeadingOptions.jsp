@@ -6,7 +6,7 @@
 <div id="dropDowns">
 	<form name="searchform" id="searchform" method="get" action="/search">
 		<form:select id="category" name="categories" path="categories">
-			<form:option value="All">All</form:option>
+			<form:option value="0">All</form:option>
 			<c:forEach items="${categories }" var="category">
 				<option value="${category.id }">${category.name }</option>
 			</c:forEach>

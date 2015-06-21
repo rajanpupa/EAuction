@@ -31,28 +31,34 @@ public class SearchController {
 			Model model
 			)
 	{
+		if(category==0){//all
+			model.addAttribute("auctions",filterBySearchText(auctionService.getAllAuctions(), search));
+			return "searchResult";
+		}
 		
 		Category categoryObj = categoryService.getCategoryById(category);
 		Iterable<Auction> filteredAuctions = auctionService.getAuctionByCategory(categoryObj.getName());
 		
-		List<Auction> result = new ArrayList<Auction>();
-		
-		if(search==null || search.length()==0){
-			System.out.println("check 2");
-			model.addAttribute("auctions", filteredAuctions);
-			System.out.println("check 3");
-		}else{
-			for (Auction a : filteredAuctions) {
-				if (a.getTitle().toLowerCase().contains(search.toLowerCase())) {
-					result.add(a);
-				}
-			}
-			model.addAttribute("auctions", result);
-		}
-		
-		model.addAttribute("auctions", result);
+		model.addAttribute("auctions",filterBySearchText(filteredAuctions, search));
 		
 		return "searchResult";
+	}
+	
+	public Iterable<Auction> filterBySearchText(Iterable<Auction> auctions, String searchText){
+		List<Auction> result = new ArrayList<Auction>();
+		
+		searchText = searchText.trim();
+		if(searchText == null || searchText.length()==0){
+			return auctions;
+		}
+		
+		for (Auction a : auctions) {
+			if (a.getTitle().toLowerCase().contains(searchText.toLowerCase())) {
+				result.add(a);
+			}
+		}
+		
+		return result;
 	}
 	
 	@RequestMapping("/search/category/{category}")

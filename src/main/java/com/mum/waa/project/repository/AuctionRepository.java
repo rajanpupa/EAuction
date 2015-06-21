@@ -18,7 +18,7 @@ public interface AuctionRepository extends CrudRepository<Auction, String>{
 //	
 //	public void delete(Auction auction);
 	
-	@Query("select a from Auction a join a.category c where c.name=:categoryName")
+	@Query("select a from AUCTION a join a.category c where c.name=:categoryName")
 	public Iterable<Auction> findAuctionByCategoryName(@Param("categoryName")String categoryName);
 	
 }
