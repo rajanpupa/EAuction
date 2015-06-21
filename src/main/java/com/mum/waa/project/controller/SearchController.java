@@ -26,21 +26,28 @@ public class SearchController {
 	
 	@RequestMapping("/search")
 	public String Search(
-			@RequestParam("categories") String category, 
+			@RequestParam("categories") Integer category, 
 			@RequestParam("searchText") String search,
 			Model model
 			)
 	{
 		
-		//String search="xps";
-		auctionService.getAuctionByCategory(category);
+		Category categoryObj = categoryService.getCategoryById(category);
+		Iterable<Auction> filteredAuctions = auctionService.getAuctionByCategory(categoryObj.getName());
 		
 		List<Auction> result = new ArrayList<Auction>();
 		
-		for(Auction a : auctionService.getAllAuctions()){
-			if(a.getTitle().toLowerCase().contains(search.toLowerCase())){
-				result.add(a);
+		if(search==null || search.length()==0){
+			System.out.println("check 2");
+			model.addAttribute("auctions", filteredAuctions);
+			System.out.println("check 3");
+		}else{
+			for (Auction a : filteredAuctions) {
+				if (a.getTitle().toLowerCase().contains(search.toLowerCase())) {
+					result.add(a);
+				}
 			}
+			model.addAttribute("auctions", result);
 		}
 		
 		model.addAttribute("auctions", result);
