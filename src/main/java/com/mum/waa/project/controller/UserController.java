@@ -47,13 +47,13 @@ public class UserController {
 	
 	@RequestMapping(value="/makebid",produces="application/json", method=RequestMethod.POST)
 	public @ResponseBody Message makeBid(@RequestBody Bid bid, Principal principal){
-		final String username=principal.getName();
+	    String username=principal.getName();
 		bid.setUsername(username);
 		String id = bid.getAuctionId();
 		Double amount = bid.getBidAmount();
 		
 		System.out.println("id=" + id + " amount=" +amount);
-		Auction auction = auctionService.bid(id, amount);
+		Auction auction = auctionService.bid(id, amount , username);
 		Message message = new Message();
 		if(auction == null){
 			message.setPass(false);
@@ -84,9 +84,11 @@ public class UserController {
 		Bid bid = auction.getMaxBid();
 		if(bid!=null){
 			bid.setUsername(currentUser);
+			System.out.println("Bid is not null");
 		}else{
 			bid=new Bid(currentUser, auction.getId(), auction.getMinExpectedAmount());
 			auction.setMaxBid(bid);
+			System.out.println("Bid is null");
 		}
 		
 		MultipartFile productImage = auction.getProductImage();

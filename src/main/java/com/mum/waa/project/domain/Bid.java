@@ -20,6 +20,7 @@ public class Bid implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	Integer id;
 	
+
 	@Size(min=1, max=32)
 	String username;
 	

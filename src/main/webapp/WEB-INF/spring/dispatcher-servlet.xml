@@ -11,7 +11,8 @@
         http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 
 	<context:component-scan base-package="com.mum.waa.project.controller" />
-	<mvc:annotation-driven />
+	<context:component-scan base-package="com.mum.waa.project.formatter" />
+     <mvc:annotation-driven validator="validator" conversion-service="conversionService" />
 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -56,6 +57,23 @@
 		</bean>
 
 	</mvc:interceptors>
+	
+<mvc:annotation-driven validator="validator" conversion-service="conversionService" />
 
+<bean id="conversionService"
+		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="formatters">
+			<set>
+				<bean class="com.mum.waa.project.formatter.DateFormatter">
+					<constructor-arg type="java.lang.String" value="mm/dd/yyyy" />
+				</bean>
+			</set>
+		</property>
+	</bean>
+
+<bean id="validator"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		<property name="validationMessageSource" ref="messageSource" />
+	</bean>
 
 </beans>

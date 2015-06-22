@@ -1,13 +1,12 @@
 package com.mum.waa.project.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mum.waa.project.domain.Auction;
+import com.mum.waa.project.domain.Bid;
 import com.mum.waa.project.repository.AuctionRepository;
 
 @Service
@@ -50,7 +49,9 @@ public class AuctionServiceImpl implements AuctionService{
 
 	@PreAuthorize("hasRole('ROLE_USER')")
 	@Override
-	public Auction bid(String auctionId, Double bidAmount) {
+	public Auction bid(String auctionId, Double bidAmount, String userName) {
+		
+		System.out.println("Inside Bid");
 		
 		Auction auction = auctionRepository.findOne(auctionId);
 		if(auction == null){
@@ -60,7 +61,12 @@ public class AuctionServiceImpl implements AuctionService{
 			auction.getMaxBid().setBidAmount(bidAmount);
 			
 			System.out.println("bid amount set to " + auction.getMaxBid().getBidAmount());
+			Bid bid = new Bid(userName, auctionId, bidAmount);
+	         auction.getBidList().add(bid);
 			auctionRepository.save(auction);
+			
+			
+			
 			return auction;
 		}else{
 			return null;

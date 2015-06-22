@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 
 @Entity(name="CATEGORY")
 public class Category implements Serializable{
@@ -17,6 +19,7 @@ public class Category implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	
+	@NotEmpty
 	private String name;
 	
 	public Category()

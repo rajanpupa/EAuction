@@ -7,7 +7,9 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
@@ -15,6 +17,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
 import org.springframework.web.multipart.MultipartFile;
 
 @XmlRootElement 
@@ -23,18 +27,22 @@ public class Auction implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
+	@NotEmpty
 	@Id
 	String id;
 	
+	@NotEmpty
 	@Column
 	@Size(min=5, max=200)
 	String title;
 	
+	@NotEmpty
 	String description;
 	
 	@OneToOne(cascade={CascadeType.ALL})
 	Category category;
 	
+	@Range(min = 1)
 	Double minExpectedAmount;
 	
 	@OneToOne(cascade = {CascadeType.ALL})
@@ -52,6 +60,21 @@ public class Auction implements Serializable{
 	@JsonIgnore
 	@Transient
 	private MultipartFile  productImage;
+	
+	
+	
+	@OneToMany(fetch = FetchType.EAGER ,cascade = CascadeType.ALL)
+	List<Bid> BidList;
+	
+	
+
+	public List<Bid> getBidList() {
+		return BidList;
+	}
+
+	public void setBidList(List<Bid> bidList) {
+		BidList = bidList;
+	}
 
 	public Boolean getActive() {
 		return active;
