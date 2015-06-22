@@ -45,7 +45,7 @@ public class Auction implements Serializable{
 	@Range(min = 1)
 	Double minExpectedAmount;
 	
-	//@OneToOne(cascade = {CascadeType.ALL})
+	@OneToOne(cascade = {CascadeType.ALL})
 	Bid maxBid;
 	
 	@Transient
