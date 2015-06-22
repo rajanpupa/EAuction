@@ -59,8 +59,12 @@ public class AuctionServiceImpl implements AuctionService{
 			return null;
 		}else if(bidAmount > auction.getMaxBid().getBidAmount()){
 			auction.getMaxBid().setBidAmount(bidAmount);
+			auction.setMinExpectedAmount(bidAmount);
 			
 			System.out.println("bid amount set to " + auction.getMaxBid().getBidAmount());
+			
+			//
+			
 			Bid bid = new Bid(userName, auctionId, bidAmount);
 	         auction.getBidList().add(bid);
 			auctionRepository.save(auction);
